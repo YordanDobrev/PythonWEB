@@ -1,31 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-</head>
-<body>
-    <h1>Macrame</h1>
-
-    {% if macrame %}
-        <p>You have {{ macrame|length }} in your list</p>
-    {% endif %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Hello</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Macrame</h1>#}
+{##}
+{#    {% if macrame %}#}
+{#        <p>You have {{ macrame|length }} in your list</p>#}
+{#    {% endif %}#}
 {#    #}
 {#    <form method="get" action="/">#}
 {#        <input type="text" id="title_filter" name="title_filter" value="{{ title_filter }}" placeholder="Search">#}
 {#        <button id="submit" type="submit">Search</button>#}
 {#    </form>#}
-
-    <ul>
-        {% for m in macrame %}
-            <li><b>Name: {{ m.name }}</b>
-                <br>Description: {{ m.description }}
-                <br><b>Price: {{ m.price }}</b>
-                <br>------------------------
-            </li>
-        {% empty %}
-            <li>No results</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{##}
+{#    <ul>#}
+{#        {% for m in macrame %}#}
+{#            <li><b>Name: {{ m.name }}</b>#}
+{#                <br>Description: {{ m.description }}#}
+{#                <br><b>Price: {{ m.price }}</b>#}
+{#                <br>------------------------#}
+{#            </li>#}
+{#        {% empty %}#}
+{#            <li>No results</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#</body>#}
+{#</html>#}

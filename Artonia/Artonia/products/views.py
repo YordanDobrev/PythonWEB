@@ -11,11 +11,11 @@ def index(request):
     art_paintings = ArtPainting.objects.filter(name__icontains=art_paintings)
 
     macrame = request.GET.get('macrame', '')
-    macrame = ArtPainting.objects.filter(name__icontains=macrame)
+    macrame = Macrame.objects.filter(name__icontains=macrame)
 
     context = {
         'art_paintings': art_paintings,
         'macrame': macrame,
     }
 
-    return render(request, 'products.html', context)
+    return render(request, 'products_in_table.html', context)
