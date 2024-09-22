@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Macrame List</title>
+    {% load static %}
+    <img src="{% static 'small_macrame.jpg' %}" alt="My image">
+    <style>
+        /* Basic styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Macrame List</h1>
+    <!-- Check if the product list is not empty -->
+    {% if macrame %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through each product and create a table row -->
+            {% for m in macrame %}
+            <tr>
+                <td>{{ m.name }}</td>
+                <td>{{ m.description }}</td>
+                <td>{{ m.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+    <h2>Art Paintings List</h2>
+        <!-- Check if the product list is not empty -->
+        {% if art_paintings %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through each product and create a table row -->
+                {% for a in art_paintings %}
+                <tr>
+                    <td>{{ a.name }}</td>
+                    <td>{{ a.description }}</td>
+                    <td>{{ a.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No products available.</p>
+        {% endif %}
+</body>
+</html>
