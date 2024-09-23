@@ -3,78 +3,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Macrame List</title>
-    {% load static %}
-    <img src="{% static 'small_macrame.jpg' %}" alt="My image">
     <style>
-        /* Basic styling for the table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        /* Styling for centering and resizing the image */
+        .centered-image {
+            display: block;
+            margin: 0 auto;
+            width: 250px; /* Adjust the width to make it smaller */
         }
-        th, td {
-            padding: 10px;
-            border: 1px solid #dddddd;
-            text-align: left;
+
+        .container {
+            width: 80%; /* Adjust the width to fit your content */
+            margin: 0 auto; /* Center the container */
+            padding: 20px; /* Add padding */
+            background-color: #f9f9f9; /* Optional: Background color for the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
         }
-        th {
-            background-color: #f2f2f2;
+        body {
+            background-color: #e0f7fa; /* Light blue background */
         }
     </style>
+    <div class="container">
+        <title>Macrame List</title>
+        <img src="{% static 'images/artonia_logo.jpeg' %}" alt="Macrame" , class="centered-image">
+        <style>
+            /* Basic styling for the table */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 10px;
+                border: 1px solid #dddddd;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
 </head>
-<body>
+<div>
     <h1>Macrame List</h1>
     <!-- Check if the product list is not empty -->
     {% if macrame %}
-    <table>
-        <thead>
+        <table>
+            <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <!-- Loop through each product and create a table row -->
             {% for m in macrame %}
-            <tr>
-                <td>{{ m.name }}</td>
-                <td>{{ m.description }}</td>
-                <td>{{ m.price }}</td>
-            </tr>
+                <tr>
+                    <td>{{ m.name }}</td>
+                    <td>{{ m.description }}</td>
+                    <td>{{ m.price }}</td>
+                </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     {% else %}
         <p>No products available.</p>
     {% endif %}
     <h2>Art Paintings List</h2>
-        <!-- Check if the product list is not empty -->
-        {% if art_paintings %}
+    <!-- Check if the product list is not empty -->
+    {% if art_paintings %}
         <table>
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                </tr>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
             </thead>
             <tbody>
-                <!-- Loop through each product and create a table row -->
-                {% for a in art_paintings %}
+            <!-- Loop through each product and create a table row -->
+            {% for a in art_paintings %}
                 <tr>
                     <td>{{ a.name }}</td>
                     <td>{{ a.description }}</td>
                     <td>{{ a.price }}</td>
                 </tr>
-                {% endfor %}
+            {% endfor %}
             </tbody>
         </table>
-        {% else %}
-            <p>No products available.</p>
-        {% endif %}
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+</div>
 </body>
 </html>
-
-
-#test
