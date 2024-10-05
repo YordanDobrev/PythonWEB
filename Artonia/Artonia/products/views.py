@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from Artonia.products.forms import ProductForm
 from Artonia.products.models import ArtPainting, Macrame
 
 
@@ -19,3 +20,42 @@ def index(request):
     }
 
     return render(request, 'products_in_table.html', context)
+
+
+def add_macrame(request):
+    macrame_form = ProductForm(request.POST or None)
+
+    if request.method == 'POST':
+        if macrame_form.is_valid():
+            macrame_form.save()
+            return redirect('dash')
+
+    context = {
+        'macrame_form': macrame_form,
+    }
+
+    return render(request, 'add-macrame.html', context)
+
+
+# def dashboard(request):
+#     form = SearchForm(request.GET)
+#     posts = Post.objects.all()
+#
+#     if request.method == "GET":
+#         if form.is_valid():
+#             query = form.cleaned_data['query']
+#             posts = posts.filter(title__icontains=query)
+#
+#     context = {
+#         "posts": posts,
+#         "form": form,
+#     }
+#
+#     return render(request, 'posts/dashboard.html', context)
+
+# def macrame(request):
+#     return render(request, 'add-macrame.html')
+#
+#
+# def macrame_view(request):
+#     return render(request, 'add-macrame.html')

@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macrame</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <form action="{% url 'add-macrame' %}" method="post">
+        {{ macrame_form }}
+        {% csrf_token %}
+        <button class="button-9">Submit</button>
+    </form>
+</body>
+</html>

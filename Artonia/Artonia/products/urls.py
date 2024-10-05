@@ -1,6 +1,7 @@
 from django.urls import path
-from Artonia.products.views import index
+from . import views
 
 urlpatterns = [
-    path('', index),
+    path('', views.index, name='dash'),
+    path('add-macrame/', views.add_macrame, name='add-macrame'),
 ]
