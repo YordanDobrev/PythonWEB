@@ -1,75 +1,67 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Macrame List</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/navigation.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-<header>
-    <img width="120" src="{% static 'images/artonia_logo.jpeg' %}" alt="Macrame" class="centered-image">
+
+{% block content %}
+    <img width="400" src="{% static 'images/Artonia Logo.jpg' %}" alt="Macrame" class="shadow p-3 mb-5 bg-white rounded mx-auto d-block">
     {% include 'navigation.html' %}
-</header>
-<main>
-        <section class="section">
-            <article>
-                <h1>Macrame List</h1>
-            <!-- Check if the product list is not empty -->
-            {% if macrame %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Loop through each product and create a table row -->
-                    {% for m in macrame %}
-                        <tr>
-                            <td>{{ m.name }}</td>
-                            <td>{{ m.description }}</td>
-                            <td>{{ m.price }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>No products available.</p>
-            {% endif %}
-            </article>
-        <article>
-            <h2>Art Paintings List</h2>
-            <!-- Check if the product list is not empty -->
-            {% if art_paintings %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Loop through each product and create a table row -->
-                    {% for a in art_paintings %}
-                        <tr>
-                            <td>{{ a.name }}</td>
-                            <td>{{ a.description }}</td>
-                            <td>{{ a.price }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>No products available.</p>
-            {% endif %}
-        </article>
-        </section>
-</main>
-</body>
-<script src='https://unpkg.com/akar-icons-fonts'></script>
-</html>
+<section class="section">
+    <article class="container">
+        <div class="container-fluid">
+            <h1>
+                <span class="mx-auto" style="width: 200px;">Macrame</span>
+            </h1>
+        </div>
+        <!-- Check if the product list is not empty -->
+        {% if macrame %}
+            <table class="table border border-0" style="text-align: left">
+                <thead class="table-success">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through each product and create a table row -->
+                {% for m in macrame %}
+                    <tr>
+                        <td>{{ m.name }}</td>
+                        <td>{{ m.description }}</td>
+                        <td>{{ m.price }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No products available.</p>
+        {% endif %}
+    </article>
+    <article class="container">
+        <h2>Art Paintings List</h2>
+        <!-- Check if the product list is not empty -->
+        {% if art_paintings %}
+            <table class="table border border-0"  style="text-align: left">
+                <thead class="table-success">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through each product and create a table row -->
+                {% for a in art_paintings %}
+                    <tr>
+                        <td>{{ a.name }}</td>
+                        <td>{{ a.description }}</td>
+                        <td>{{ a.price }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No products available.</p>
+        {% endif %}
+    </article>
+</section>
+{% endblock %}

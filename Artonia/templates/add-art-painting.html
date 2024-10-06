@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="container" style="text-align: center">Add Macrame</h1>
+    <h1 class="container" style="text-align: center">Add Art Painting</h1>
     {% include 'navigation.html' %}
-    <form action="{% url 'add-macrame' %}" method="post">
-        {{ macrame_form }}
+    <form action="{% url 'add-art-painting' %}" method="post">
+        {{ art_form }}
         {% csrf_token %}
         <button class="button-9">Submit</button>
     </form>

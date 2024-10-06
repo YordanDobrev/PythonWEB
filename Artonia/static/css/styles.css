@@ -52,7 +52,7 @@ form input[type="submit"]:hover {
 /* Adjusted .button-9 to match the form's theme */
 .button-9 {
     appearance: button;
-    background-color: #007bff; /* Match form submit button color */
+    background-color: #00ffd9; /* Match form submit button color */
     border-radius: 6px;
     border-width: 0;
     color: #fff;
@@ -71,7 +71,7 @@ form input[type="submit"]:hover {
 }
 
 .button-9:hover {
-    background-color: #0056b3; /* Darken on hover */
+    background-color: #00b3a4; /* Darken on hover */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
 }
 
@@ -132,21 +132,4 @@ legend {
 
 table {
     margin: 100px auto;
-}
-
-/* Center text inside headings */
-
-
-/* Center "No products available" message */
-
-/* Optional: center the entire section */
-/*.article {*/
-/*    text-align: left;*/
-/*    border: #007BFF;*/
-/*}*/
-
-/* Optionally center the table itself */
-table {
-    margin: 0 auto;
-    border: #007BFF 1px solid;
 }

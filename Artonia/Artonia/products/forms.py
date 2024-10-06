@@ -1,8 +1,14 @@
 from django import forms
-from Artonia.products.models import Macrame
+from Artonia.products.models import Macrame, ArtPainting
 
 
-class ProductForm(forms.ModelForm):
+class MacrameForm(forms.ModelForm):
     class Meta:
         model = Macrame
+        fields = '__all__'
+
+
+class ArtForm(forms.ModelForm):
+    class Meta:
+        model = ArtPainting
         fields = '__all__'

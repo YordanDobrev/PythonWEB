@@ -16,6 +16,8 @@ class Product(models.Model):
         decimal_places=2
     )
 
+    created_at = models.DateTimeField(auto_now=True)
+
 
 class Macrame(Product):
 
