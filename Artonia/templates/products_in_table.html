@@ -16,6 +16,7 @@
             <table class="table border border-0" style="text-align: left">
                 <thead class="table-success">
                 <tr>
+                    <th>Options</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
@@ -25,6 +26,7 @@
                 <!-- Loop through each product and create a table row -->
                 {% for m in macrame %}
                     <tr>
+                        <td><a href="{% url 'edit-macrame' m.id %}">Edit</a></td>
                         <td>{{ m.name }}</td>
                         <td>{{ m.description }}</td>
                         <td>{{ m.price }}</td>

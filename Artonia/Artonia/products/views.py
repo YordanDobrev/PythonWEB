@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from Artonia.products.forms import ArtForm, MacrameForm
 from Artonia.products.models import ArtPainting, Macrame
@@ -50,6 +50,26 @@ def add_art_painting(request):
     }
 
     return render(request, 'add-art-painting.html', context)
+
+
+def edit_macrame(request, id):
+    macrame = get_object_or_404(Macrame, id=id)  # Fetch the macrame object
+
+    if request.method == 'POST':
+        form = MacrameForm(request.POST, instance=macrame)
+        if form.is_valid():
+            form.save()
+            return redirect('dash')  # Redirect after saving
+    else:
+        form = MacrameForm(instance=macrame)  # Load the form with macrame instance data
+
+    context = {
+        'form': form,
+        'macrame': macrame,
+    }
+
+    return render(request, 'edit_macrame.html', context)
+
 
 # def dashboard(request):
 #     form = SearchForm(request.GET)
