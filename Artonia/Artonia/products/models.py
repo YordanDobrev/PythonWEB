@@ -1,4 +1,5 @@
 from django.db import models
+from Artonia.products.validators import bad_words
 
 
 class Product(models.Model):
@@ -6,10 +7,14 @@ class Product(models.Model):
         abstract = True
 
     name = models.CharField(
-        max_length=100
+        max_length=100,
+        blank=False,
+        null=False,
     )
 
-    description = models.TextField()
+    description = models.TextField(
+        validators=[bad_words]
+    )
 
     price = models.DecimalField(
         max_digits=10,

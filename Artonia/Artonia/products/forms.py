@@ -12,3 +12,9 @@ class ArtForm(forms.ModelForm):
     class Meta:
         model = ArtPainting
         fields = '__all__'
+
+    name = forms.CharField(
+        error_messages={
+            "required": "Title is required",
+        }
+    )
