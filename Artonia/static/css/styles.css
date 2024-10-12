@@ -133,3 +133,23 @@ legend {
 table {
     margin: 100px auto;
 }
+
+.button-edit {
+    display: inline-block !important;
+    background-color: #00b318 !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+.button-edit:hover {
+    background-color: #007d12;  /* Darker green on hover */
+}
+
+.button-edit:active {
+    background-color: #005b0e;  /* Even darker green when clicked */
+}

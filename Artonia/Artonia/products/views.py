@@ -71,25 +71,20 @@ def edit_macrame(request, id):
     return render(request, 'edit_macrame.html', context)
 
 
-# def dashboard(request):
-#     form = SearchForm(request.GET)
-#     posts = Post.objects.all()
-#
-#     if request.method == "GET":
-#         if form.is_valid():
-#             query = form.cleaned_data['query']
-#             posts = posts.filter(title__icontains=query)
-#
-#     context = {
-#         "posts": posts,
-#         "form": form,
-#     }
-#
-#     return render(request, 'posts/dashboard.html', context)
+def edit_art_painting(request, id):
+    art_painting = get_object_or_404(ArtPainting, id=id)  # Fetch the art_object object
 
-# def macrame(request):
-#     return render(request, 'add-macrame.html')
-#
-#
-# def macrame_view(request):
-#     return render(request, 'add-macrame.html')
+    if request.method == 'POST':
+        form = ArtForm(request.POST, instance=art_painting)
+        if form.is_valid():
+            form.save()
+            return redirect('dash')  # Redirect after saving
+    else:
+        form = ArtForm(instance=art_painting)  # Load the form with art_painting instance data
+
+    context = {
+        'form': form,
+        'art_painting': art_painting,
+    }
+
+    return render(request, 'edit_art_painting.html', context)

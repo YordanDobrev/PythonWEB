@@ -3,7 +3,7 @@
 {% block content %}
     <h1 class="container" style="text-align: center">Edit Art Painting</h1>
     {% include 'navigation.html' %}
-        <form action="{% url 'edit-macrame' macrame.id %}" method="post">
+        <form action="{% url 'edit-art-painting' art_painting.id %}" method="post">
             {{ form.as_p }}
             {% csrf_token %}
             <button class="button-9" type="submit">Save</button>
