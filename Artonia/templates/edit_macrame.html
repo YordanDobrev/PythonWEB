@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="container" style="text-align: center">Edit Art Painting</h1>
+    <h1 class="container" style="text-align: center">Edit Macrame</h1>
     {% include 'navigation.html' %}
         <form action="{% url 'edit-macrame' macrame.id %}" method="post">
             {{ form.as_p }}

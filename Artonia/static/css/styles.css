@@ -153,3 +153,8 @@ table {
 .button-edit:active {
     background-color: #005b0e;  /* Even darker green when clicked */
 }
+
+article .title {
+    margin-top: 40px !important; /* Force margin to apply */
+    text-align: center !important; /* Optional: center the text */
+}

@@ -3,7 +3,7 @@
 {% block content %}
     <h1 class="container" style="text-align: center">Add Art Painting</h1>
     {% include 'navigation.html' %}
-    <form action="{% url 'add-art-painting' %}" method="post">
+    <form action="{% url 'add-art-painting' %}" method="post" enctype="multipart/form-data">
         {{ art_form }}
         {% csrf_token %}
         <button class="button-9">Submit</button>

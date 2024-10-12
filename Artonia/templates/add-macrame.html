@@ -3,7 +3,7 @@
 {% block content %}
     <h1 class="container" style="text-align: center">Add Macrame</h1>
     {% include 'navigation.html' %}
-    <form action="{% url 'add-macrame' %}" method="post">
+    <form action="{% url 'add-macrame' %}" method="post" enctype="multipart/form-data">
         {{ macrame_form }}
         {% csrf_token %}
         <button class="button-9">Submit</button>

@@ -1,4 +1,5 @@
 from django.db import models
+
 from Artonia.products.validators import bad_words
 
 
@@ -8,8 +9,6 @@ class Product(models.Model):
 
     name = models.CharField(
         max_length=100,
-        blank=False,
-        null=False,
     )
 
     description = models.TextField(
@@ -21,6 +20,12 @@ class Product(models.Model):
         decimal_places=2,
     )
 
+    image = models.ImageField(
+        upload_to='images/',
+        null=True,
+        blank=True,
+    )
+
     created_at = models.DateTimeField(auto_now=True)
 
 
@@ -28,7 +33,6 @@ class Macrame(Product):
 
     def __str__(self):
         return self.name
-
 
 class ArtPainting(Product):
 
