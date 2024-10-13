@@ -1,7 +1,46 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, resolve_url
+from pyperclip import copy
+
+from Petstagram.common.models import Like
+from Petstagram.photos.models import Photo
 
 
 # Create your views here.
 
 def home_page(request):
-    return render(request, 'common/home-page.html')
+    all_photos = Photo.objects.all()
+    # comment_form = CommentForm()
+    # search_form = SearchForm(request.GET)
+    #
+    # if search_form.is_valid():
+    #     all_photos = all_photos.filter(
+    #         tagged_pets__name__icontains=search_form.cleaned_data['pet_name']
+    #     )
+
+    context = {
+        'all_photos': all_photos,
+        # 'comment_form': comment_form,
+        # 'search_form': search_form,
+    }
+
+    return render(request, 'common/home-page.html', context)
+
+
+def likes_functionality(request, photo_id: int):
+    liked_object = Like.objects.filter(
+        to_photo_id=photo_id
+    ).first()
+
+    if liked_object:
+        liked_object.delete()
+    else:
+        like = Like(to_photo_id=photo_id)
+        like.save()
+
+    return redirect(request.META.get('HTTP_REFERER') + f'#{photo_id}')
+
+
+def copy_link_to_clipboard(request, photo_id):
+    copy(request.META['HTTP_HOST']) + (resolve_url('photo-details', photo_id))
+
+    return redirect(request.META['HTTP_HOST'] + f'#{photo_id}')
