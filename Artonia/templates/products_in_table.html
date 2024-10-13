@@ -31,7 +31,9 @@
                         <td>{{ m.price }}</td>
                         <td>
                             {% if m.image %}
-                                <img src="{{ m.image.url }}" width="50" height="50" alt="Macrame">
+                                <img src="https://res.cloudinary.com/dbq91oe2z/{{ m.image }}" alt="Macrame">
+{##}
+{#                                <img src="{{ m.image }}" width="50" height="50" alt="Macrame">#}
                             {% else %}
                                 <p>No Image</p>
                             {% endif %}
@@ -70,7 +72,7 @@
                         <td>{{ a.price }}</td>
                         <td>
                             {% if a.image %}
-                                <img src="{{ a.image.url }}" width="50" height="50" alt="Art Painting">
+                                <img src="{{ a.image }}" width="50" height="50" alt="Art Painting">
                             {% else %}
                                 <p>No Image</p>
                             {% endif %}

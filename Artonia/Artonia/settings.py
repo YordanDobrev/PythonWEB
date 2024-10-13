@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
 
     "crispy_forms",
     "crispy_bootstrap4",
+    'cloudinary_storage',
+    'cloudinary',
 
     "Artonia.products.apps.ProductsConfig"
 ]
@@ -78,6 +83,23 @@ WSGI_APPLICATION = 'Artonia.wsgi.application'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+cloudinary.config(
+    cloud_name="dbq91oe2z",
+    api_key="282431967362666",
+    api_secret="oDrX6GDnTkz_ZVs5yNKXNEEs4r8",  # Click 'View API Keys' above to copy your API secret
+    secure=True
+)
+
+
+
+# Cloudinary configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dbq91oe2z',
+    'API_KEY': '282431967362666',
+    'API_SECRET': 'oDrX6GDnTkz_ZVs5yNKXNEEs4r8',
+
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -131,8 +153,13 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/pictures/"
+
+
+# MEDIA_ROOT = BASE_DIR / "media"
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

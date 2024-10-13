@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.db import models
 
 from Artonia.products.validators import bad_words
@@ -21,9 +22,7 @@ class Product(models.Model):
     )
 
     image = models.ImageField(
-        upload_to='images/',
-        null=True,
-        blank=True,
+        CloudinaryField('image', blank=True, null=True),
     )
 
     created_at = models.DateTimeField(auto_now=True)
