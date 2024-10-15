@@ -6,6 +6,9 @@ from Petstagram.photos.models import Photo
 # Create your models here.
 
 class Comment(models.Model):
+    class Meta:
+        ordering = ['-date_time_of_publication']
+
     text = models.TextField(
         max_length=300,
     )
