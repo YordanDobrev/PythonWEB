@@ -27,6 +27,7 @@ def home_page(request):
 
 
 def likes_functionality(request, photo_id: int):
+    photo = Photo.objects.get(id=photo_id)
     liked_object = Like.objects.filter(
         to_photo_id=photo_id
     ).first()
@@ -34,10 +35,10 @@ def likes_functionality(request, photo_id: int):
     if liked_object:
         liked_object.delete()
     else:
-        like = Like(to_photo_id=photo_id)
+        like = Like(to_photo=photo)
         like.save()
 
-    return redirect(request.META.get('HTTP_REFERER') + f'#{photo_id}')
+    return redirect(request.META['HTTP_REFERER'] + f'#{photo_id}')
 
 
 def copy_link_to_clipboard(request, photo_id):
