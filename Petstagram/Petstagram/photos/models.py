@@ -9,7 +9,10 @@ from Petstagram.photos.validators import validate_photos
 
 
 class Photo(models.Model):
-    photo = models.ImageField(validators=(validate_photos,))
+    photo = models.ImageField(
+        upload_to='media/',
+        validators=(validate_photos,)
+    )
 
     description = models.TextField(
         max_length=300,
