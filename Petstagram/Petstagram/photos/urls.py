@@ -9,3 +9,5 @@ urlpatterns = [
         path('delete/', views.delete_photo, name='delete-photo'),
     ])),
 ]
+
+

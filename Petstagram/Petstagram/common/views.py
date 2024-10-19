@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, resolve_url
 from pyperclip import copy
 
+from Petstagram.common.forms import CommentForm
 from Petstagram.common.models import Like
 from Petstagram.photos.models import Photo
 
@@ -9,7 +10,7 @@ from Petstagram.photos.models import Photo
 
 def home_page(request):
     all_photos = Photo.objects.all()
-    # comment_form = CommentForm()
+    comment_form = CommentForm()
     # search_form = SearchForm(request.GET)
     #
     # if search_form.is_valid():
@@ -19,7 +20,7 @@ def home_page(request):
 
     context = {
         'all_photos': all_photos,
-        # 'comment_form': comment_form,
+        'comment_form': comment_form,
         # 'search_form': search_form,
     }
 
@@ -45,3 +46,16 @@ def share_functionality(request, photo_id: int):
     copy(request.META.get('HTTP_HOST') + resolve_url('photo-details', photo_id))
 
     return redirect(request.META.get('HTTP_REFERER') + f'#{photo_id}')
+
+
+def add_comment(request, photo_id: int):
+    if request.method == "POST":
+        photo = Photo.objects.get(id=photo_id)
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.to_photo = photo
+            comment.save()
+
+        return redirect(request.META('HTTP_REFERER') + f'#{photo_id}')

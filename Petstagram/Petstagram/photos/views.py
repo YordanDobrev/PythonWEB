@@ -16,6 +16,7 @@ def photo_add_page(request):
 
     return render(request, 'photos/photo-add-page.html', context)
 
+
 def photo_edit_page(request, pk):
     photo = Photo.objects.get(pk=pk)
     form = PhotoEditForm(request.POST or None, request.FILES or None)
