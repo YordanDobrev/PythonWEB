@@ -7,6 +7,6 @@ urlpatterns = [
     path('<int:pk>/', include([
         path('details/', views.album_details, name='album_details'),
         path('edit/', views.album_edit, name='album_edit'),
-        path('delete/', views.DeleteAlbum.as_view(), name='album_delete'),
+        path('delete/', views.album_delete, name='album_delete'),
     ])),
 ]

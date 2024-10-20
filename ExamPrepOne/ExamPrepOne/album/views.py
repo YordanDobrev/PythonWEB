@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 
-from ExamPrepOne.album.forms import CreateAlbumForm, EditAlbumForm
+from ExamPrepOne.album.forms import CreateAlbumForm, EditAlbumForm, DeleteAlbumForm
 from ExamPrepOne.album.models import Album
 
 
@@ -57,10 +57,18 @@ def album_edit(request, pk: int):
     return render(request, 'album-edit.html', context)
 
 
-class DeleteAlbum(View):
-    model = Album
-    template_name = 'album-delete.html'
-    context_object_name = 'album'
-    success_url = reverse_lazy('index')
-# def album_delete(request):
-#     return render(request, 'album-delete.html', context=None)
+def album_delete(request, pk: int):
+    album = Album.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        album.delete()
+        return redirect('index')
+
+    form = DeleteAlbumForm(initial=album.__dict__)
+
+    context = {
+        'form': form,
+        'album': album,
+    }
+
+    return render(request, 'album-delete.html', context)
