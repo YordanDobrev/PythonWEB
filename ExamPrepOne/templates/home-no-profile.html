@@ -2,8 +2,12 @@
 {% load static %}
 
 {% block content %}
+
     
   <div class="container-inline">
+      <h1 style="color: wheat">
+         THIS IS SICK
+    </h1>
     <section id="welcomePage">
       <div id="welcome-message">
         <h1>Welcome to</h1>
@@ -16,29 +20,11 @@
 
     <!-- Registration -->
     <section id="registerPage">
-      <form method="post">
-          {% csrf_token %}
+      <form method="POST">
             <fieldset>
                 <legend>Profile</legend>
-                
-                <div>
-                    <label for="username">{{ form.username.label }}</label>
-                    {{ form.username }}
-                    {{ form.username.errors }}
-                </div>
-        
-                <div>
-                    <label for="email">{{ form.email.label }}</label>
-                    {{ form.email }}
-                    {{ form.email.errors }}
-                </div>
-        
-                <div>
-                    <label for="age">{{ form.age.label }}</label>
-                    {{ form.age }}
-                    {{ form.age.errors }}
-                </div>
-        
+                {{ profile_form }}
+                {% csrf_token %}
                 <button type="submit" class="register">Enter</button>
             </fieldset>
       </form>

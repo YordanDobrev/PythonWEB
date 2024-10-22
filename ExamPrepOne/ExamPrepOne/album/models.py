@@ -7,14 +7,14 @@ from ExamPrepOne.account.models import Profile
 # Create your models here.
 class Album(models.Model):
     MUSIC_CHOICES = [
-        ('POP', 'Pop Music'),
-        ('JAZZ', 'Jazz Music'),
-        ('RNB', 'R&B Music'),
-        ('ROCK', 'Rock Music'),
-        ('COUNTRY', 'Country Music'),
-        ('DANCE', 'Dance Music'),
-        ('HIPHOP', 'Hip Hop Music'),
-        ('OTHER', 'Other'),
+        ('Pop Music', 'Pop Music'),
+        ('Jazz Music', 'Jazz Music'),
+        ('R&B Music', 'R&B Music'),
+        ('Rock Music', 'Rock Music'),
+        ('Country Music', 'Country Music'),
+        ('Dance Music', 'Dance Music'),
+        ('Hip Hop Music', 'Hip Hop Music'),
+        ('Other', 'Other'),
     ]
 
     album_name = models.CharField(
@@ -57,4 +57,5 @@ class Album(models.Model):
     owner = models.ForeignKey(
         to=Profile,
         on_delete=models.CASCADE,
+        related_name='albums',
     )

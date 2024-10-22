@@ -26,10 +26,11 @@ class ProfileCreationForm(BaseProfile):
     )
 
     age = forms.IntegerField(
+        min_value=0,
         widget=forms.NumberInput(attrs={
-            'id': 'age',
-            'placeholder': 'Age'
-        })
+            'placeholder': 'Age'},
+        ),
+        required=False
     )
 
 

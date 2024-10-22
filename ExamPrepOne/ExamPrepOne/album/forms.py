@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 
 from ExamPrepOne.album import choices
 from ExamPrepOne.album.models import Album
@@ -7,7 +8,7 @@ from ExamPrepOne.album.models import Album
 class BaseForm(forms.ModelForm):
     class Meta:
         model = Album
-        exclude = ['owner']
+        fields = '__all__'
 
         album_name = forms.CharField(
             widget=forms.TextInput(attrs={

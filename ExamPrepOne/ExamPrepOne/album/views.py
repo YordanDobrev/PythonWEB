@@ -9,7 +9,7 @@ from ExamPrepOne.album.models import Album
 # Create your views here.
 
 def add_album(request):
-    album_form = CreateAlbumForm(request.POST or None, request.FILES)
+    album_form = CreateAlbumForm(request.POST or None, request.FILES or None)
 
     if request.method == 'POST':
         if album_form.is_valid():
