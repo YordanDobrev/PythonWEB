@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>My Music App</title>
-    <!-- Static Load -->
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
+{% extends 'common/base.html' %}
+{% load static %}
 
-  <body>
-    <div id="box">
-      <!-- Navigation Bar -->
-      <header>
-        <nav>
-          <img src="/images/headphones.png" alt="headphones" />
-          <a href="#">Home</a>
-          <ul></ul>
-          <ul>
-            <!--Only for user with created profile-->
-            <li><a href="#">Create Album</a></li>
-            <li><a href="#">Profile</a></li>
-          </ul>
-        </nav>
-      </header>
-      <!-- End Navigation Bar -->
+{% block content %}
 
       <!-- Main Content -->
       <!--Details Page-->
@@ -30,7 +9,7 @@
         <div class="wrapper">
           <div class="albumCover">
             <!-- Album Image -->
-            <img src="/images/Lorde.jpg" alt="Cover Image" />
+            <img src="{% static 'images/Lorde.jpg' %}" alt="Cover Image" />
           </div>
 
           <div class="albumInfo">
@@ -49,18 +28,11 @@
 
             <div class="actionBtn">
               <!-- Album Buttons -->
-              <a href="#" class="edit">Edit</a>
-              <a href="#" class="remove">Delete</a>
+              <a href="{% url 'album_edit' %}" class="edit">Edit</a>
+              <a href="{% url 'album_delete' %}" class="remove">Delete</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Footer -->
-      <footer>
-        <div>&copy;SoftUni Team 2024. All rights reserved.</div>
-      </footer>
-      <!-- End Footer -->
-    </div>
-  </body>
-</html>
+{% endblock %}
