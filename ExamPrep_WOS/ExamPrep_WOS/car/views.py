@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from ExamPrep_WOS.car.forms import CarCreateForm
 from ExamPrep_WOS.car.models import Car
@@ -32,12 +32,17 @@ class CarCreateView(CreateView):
         return super().form_valid(form)
 
 
-def car_details(request):
-    return render(request, 'car/car-details.html')
+class CarDetailsView(DetailView):
+    model = Car
+    template_name = 'car/car-details.html'
+    pk_url_kwarg = 'id'
+    context_object_name = 'car'
 
 
 def car_edit(request):
     return render(request, 'car/car-edit.html')
+
+
 
 
 def car_delete(request):
