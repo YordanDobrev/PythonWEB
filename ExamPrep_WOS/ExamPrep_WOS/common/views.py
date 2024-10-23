@@ -13,11 +13,6 @@ class HomePage(ListView, BaseFormView):
     success_url = reverse_lazy('home')
 
     def get_template_names(self):
-        profile = get_user_obj()  # None or QuerySet
-
-        if profile:
-            return ['base.html']
-
         return ['index.html']
 
     def form_valid(self, form):

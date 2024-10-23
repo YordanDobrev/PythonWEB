@@ -22,7 +22,7 @@ def profile_creation(request):
 
     if form.is_valid():
         form.save()
-        return redirect('catalog')
+        return redirect('home')
 
     context = {
         'form': form
@@ -53,11 +53,6 @@ def profile_details(request):
     }
 
     return render(request, 'profile/profile-details.html', context)
-
-
-# def profile_edit(request):
-#     return render(request, 'profile/profile-edit.html')
-#
 
 class EditProfileView(UpdateView):
     model = Profile

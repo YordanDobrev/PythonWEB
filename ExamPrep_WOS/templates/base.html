@@ -15,14 +15,8 @@
     <header>
         <!-- Navigation Bar -->
         <h1>
-            {% get_user as profile %}
-            {% if not profile %}
-                <a class="index-navigation" href="{% url 'home' %}"
-                ><span>World of Speed</span></a>
-            {% else %}
-                <a class="index-navigation" href="{% url 'catalog' %}"
-                ><span>World of Speed</span></a>
-            {% endif %}
+            <a class="index-navigation" href="{% url 'home' %}"
+            ><span>World of Speed</span></a>
         </h1>
         <nav>
             {% get_user as profile %}
