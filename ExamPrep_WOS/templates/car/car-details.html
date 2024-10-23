@@ -19,12 +19,11 @@
             </div>
             <!-- Edit/Delete buttons -->
             <div class="buttons">
-                <a href="#" class="edit-button">Edit</a>
+                <a href="{% url 'car_edit' car.id %}" class="edit-button">Edit</a>
                 <a href="#" class="delete-button">Delete</a>
             </div>
         </div>
     </section>
-    
-{% endblock %}
 
+{% endblock %}
 

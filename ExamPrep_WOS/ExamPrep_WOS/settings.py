@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-9sof%m%)6ekaq+-1+i+izbnafzwfesq+ta)@0u9=ejh9$%xb)x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+# python manage.py runserver 0.0.0.0:8000 - Restart the Django server with an explicit IP and port to avoid any default settings issues
 
 # Application definition
 
@@ -35,9 +36,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'crispy_forms',
+    'crispy_bootstrap4',
+
     "ExamPrep_WOS.car.apps.CarConfig",
     "ExamPrep_WOS.profiles.apps.ProfilesConfig",
-    "ExamPrep_WOS.common.apps.CommonConfig"
+    "ExamPrep_WOS.common.apps.CommonConfig",
+
 ]
 
 MIDDLEWARE = [
@@ -129,3 +135,5 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
