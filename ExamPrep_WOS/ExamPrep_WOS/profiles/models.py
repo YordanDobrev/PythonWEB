@@ -41,3 +41,4 @@ class Profile(models.Model):
         blank=True,
         null=True,
     )
+

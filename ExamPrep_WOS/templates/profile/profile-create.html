@@ -8,34 +8,7 @@
                 <div class="brand-logo"></div>
                 <h1>Create Profile</h1>
                 {% csrf_token %}
-                {{ form }}
-                
-{#                <label for="username">Username:</label>#}
-{#                <input#}
-{#                        type="text"#}
-{#                        name="username"#}
-{#                        maxlength="10"#}
-{#                        required=""#}
-{#                        id="username"#}
-{#                />#}
-{##}
-{#                <label for="email">Email:</label>#}
-{#                <input#}
-{#                        type="email"#}
-{#                        name="email"#}
-{#                        maxlength="254"#}
-{#                        required=""#}
-{#                        id="email"#}
-{#                />#}
-{##}
-{#                <label for="age">Age:</label>#}
-{#                <input type="number" name="age" required="" id="age"/><br>#}
-{#                <span class="helptext">Age requirement: 21 years and above.</span>#}
-{##}
-{#                <label for="password">Password:</label>#}
-{#                <input type="password" name="password" required="" id="password"/>#}
-
-                <!-- Create Button -->
+                {{ form.as_p }}
                 <input class="btn submit" type="submit" value="Create Profile"/>
             </div>
         </form>
