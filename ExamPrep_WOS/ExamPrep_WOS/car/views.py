@@ -10,13 +10,15 @@ from ExamPrep_WOS.utils import get_user_obj
 # Create your views here.
 
 def car_catalog(request):
-    form = Car.objects.all()
+    profile = get_user_obj()
+    cars = profile.car_set.all()
 
     context = {
-        'form': form,
+        'profile': profile,
+        'cars': cars,
     }
 
-    return render(request, 'catalogue.html', context)
+    return render(request, 'car/catalogue.html', context)
 
 
 class CarCreateView(CreateView):

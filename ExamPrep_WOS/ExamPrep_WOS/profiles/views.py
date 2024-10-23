@@ -1,7 +1,7 @@
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import UpdateView, DeleteView
 
 from ExamPrep_WOS.profiles.forms import ProfileCreateForm, ProfileUpdateForm
 from ExamPrep_WOS.profiles.models import Profile

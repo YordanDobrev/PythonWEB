@@ -3,31 +3,35 @@
 {% block content %}
 
     <!-- Display a paragraph: If there are no cars yet-->
+    {% if not cars %}
     <p class="no-articles">No cars yet</p>
-
+    {% endif %}
     <!-- Display a card with information about each car (if any)-->
 
     <section id="catalogue">
-        <h1>Total cars: {{ form.count }}</h1>
+        <h1>Total cars: {{ cars.count }}</h1>
+        {% for car in cars %}
+                <!-- first car-->
+            <div class="car-card">
+                <div class="image-wrap">
+                    <!-- car image -->
+                    <img
+                            src="{{ car.image_url }}"
+                            alt="{{ car.type }}"
+                    />
+                </div>
+                <!-- car type -->
+                <h3>{{ car.type }}</h3>
+                <!-- car model -->
+                <h1>{{ car.model }}</h1>
+                <div class="details-buttons">
+                    <!-- car details button -->
+                    <a href="#" class="details-btn">Details</a>
+                </div>
+            </div>
+            
+        {% endfor %}
 
-        <!-- first car-->
-        <div class="car-card">
-            <div class="image-wrap">
-                <!-- car image -->
-                <img
-                        src="{{ form.image_url }}"
-                        alt="Rally"
-                />
-            </div>
-            <!-- car type -->
-            <h3>Rally</h3>
-            <!-- car model -->
-            <h1>Ford Puma M</h1>
-            <div class="details-buttons">
-                <!-- car details button -->
-                <a href="#" class="details-btn">Details</a>
-            </div>
-        </div>
 {##}
 {#        <!-- second car-->#}
 {#        <div class="car-card">#}
@@ -88,3 +92,4 @@
     </section>
 {% endblock %}
 
+12

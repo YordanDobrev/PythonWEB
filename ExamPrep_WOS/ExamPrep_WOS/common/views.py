@@ -16,7 +16,7 @@ class HomePage(ListView, BaseFormView):
         profile = get_user_obj()  # None or QuerySet
 
         if profile:
-            return ['catalogue.html']
+            return ['base.html']
 
         return ['index.html']
 
