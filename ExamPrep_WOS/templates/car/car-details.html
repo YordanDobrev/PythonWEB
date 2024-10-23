@@ -20,7 +20,7 @@
             <!-- Edit/Delete buttons -->
             <div class="buttons">
                 <a href="{% url 'car_edit' car.id %}" class="edit-button">Edit</a>
-                <a href="#" class="delete-button">Delete</a>
+                <a href="{% url 'car_delete' car.id %}" class="delete-button">Delete</a>
             </div>
         </div>
     </section>

@@ -7,6 +7,6 @@ urlpatterns = [
     path('<int:id>/', include([
         path('details/', views.CarDetailsView.as_view(), name='car_details'),
         path('edit/', views.CarUpdateView.as_view(), name='car_edit'),
-        path('delete/', views.car_delete, name='car_delete'),
+        path('delete/', views.CarDeleteView.as_view(), name='car_delete'),
     ])),
 ]
