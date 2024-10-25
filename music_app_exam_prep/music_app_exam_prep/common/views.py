@@ -16,10 +16,10 @@ class HomePage(ListView, BaseFormView):
 
     def get_template_names(self):
         profile = get_user_obj()
-        if profile:
-            return ['common/home-with-profile.html']
+        if not profile:
+            return ['common/home-no-profile.html']
 
-        return ['common/home-no-profile.html']
+        return ['common/home-with-profile.html']
 
     def form_valid(self, form):
         form.save()

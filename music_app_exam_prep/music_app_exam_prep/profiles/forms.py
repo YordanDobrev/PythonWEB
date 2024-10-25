@@ -19,3 +19,9 @@ class ProfileCreationForm(forms.ModelForm):
     age = forms.IntegerField(widget=forms.NumberInput(attrs={
         'placeholder': 'Age'
     }))
+
+
+class ProfileDeletionForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = '__all__'
