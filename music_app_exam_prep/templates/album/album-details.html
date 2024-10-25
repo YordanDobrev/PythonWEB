@@ -18,7 +18,7 @@
               <h1>Name: {{ album.album_name }}</h1>
               <h3>Artist: {{ album.artist }}</h3>
               <h4>Genre: {{ album.genre }}</h4>
-              <h4>Price: ${{ album.price }}</h4>
+              <h4>Price: ${{ album.price|floatformat:2 }}</h4>
               <p>
                 Description: {{ album.description }}
               </p>
@@ -26,8 +26,8 @@
 
             <div class="actionBtn">
               <!-- Album Buttons -->
-              <a href="#" class="edit">Edit</a>
-              <a href="#" class="remove">Delete</a>
+              <a href="{% url 'album_edit' album.id %}" class="edit">Edit</a>
+              <a href="{% url 'album_delete' album.id %}" class="remove">Delete</a>
             </div>
           </div>
         </div>
