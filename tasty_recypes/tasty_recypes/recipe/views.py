@@ -9,8 +9,17 @@ from tasty_recypes.utils import get_user_obj
 
 # Create your views here.
 
+
 def recipe_catalog(request):
-    return render(request, 'recipe/catalogue.html')
+    profile = get_user_obj()
+    recipes = Recipe.objects.filter(pk=profile.pk)
+
+    context = {
+        'profile': profile,
+        'recipes': recipes,
+    }
+
+    return render(request, 'recipe/catalogue.html', context)
 
 
 class RecipeCreateView(CreateView):
@@ -28,6 +37,7 @@ class RecipeDetailView(DetailView):
     model = Recipe
     template_name = 'recipe/details-recipe.html'
     pk_url_kwarg = 'id'
+    context_object_name = 'recipe'
 
 
 class RecipeUpdateView(UpdateView):
@@ -38,15 +48,11 @@ class RecipeUpdateView(UpdateView):
     success_url = reverse_lazy('home')
 
 
-def recipe_delete(request):
-    return render(request, 'recipe/delete-recipe.html')
-
-
 class RecipeDeleteView(DeleteView):
     model = Recipe
     form_class = RecipeDeleteForm
     template_name = 'recipe/delete-recipe.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('catalogue')
     pk_url_kwarg = 'id'
 
     def get_initial(self):

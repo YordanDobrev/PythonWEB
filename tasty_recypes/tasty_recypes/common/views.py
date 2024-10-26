@@ -18,9 +18,7 @@ class HomePage(ListView, BaseFormView):
         profile = get_user_obj()
 
         if profile:
-            return ['recipe/catalogue.html']
-
-        return ['home-page.html']
+            return ['home-page.html']
 
     def form_valid(self, form):
         form.save()

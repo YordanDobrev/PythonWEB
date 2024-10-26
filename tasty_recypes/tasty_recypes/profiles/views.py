@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 
-from tasty_recypes.profiles.forms import ProfileCreationForm
+from tasty_recypes.profiles.forms import ProfileCreationForm, ProfileUpdateForm
 from tasty_recypes.profiles.models import Profile
+from tasty_recypes.utils import get_user_obj
 
 
 class ProfileCreateView(CreateView):
@@ -13,13 +14,27 @@ class ProfileCreateView(CreateView):
     success_url = reverse_lazy('catalogue')
 
 
-def profile_edit(request):
-    return render(request, 'profile/edit-profile.html')
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    form_class = ProfileUpdateForm
+    template_name = 'profile/edit-profile.html'
+    success_url = reverse_lazy('profile_details')
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
 
 
-def profile_delete(request):
-    return render(request, 'profile/delete-profile.html')
+class ProfileDeleteView(DeleteView):
+    model = Profile
+    template_name = 'profile/delete-profile.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
 
 
-def profile_details(request):
-    return render(request, 'profile/details-profile.html')
+class ProfileDetailsView(DetailView):
+    template_name = 'profile/details-profile.html'
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
