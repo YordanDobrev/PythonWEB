@@ -1,9 +1,16 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
+from tasty_recypes.profiles.forms import ProfileCreationForm
+from tasty_recypes.profiles.models import Profile
 
 
-# Create your views here.
-def profile_create(request):
-    return render(request, 'profile/create-profile.html')
+class ProfileCreateView(CreateView):
+    model = Profile
+    form_class = ProfileCreationForm
+    template_name = 'profile/create-profile.html'
+    success_url = reverse_lazy('catalogue')
 
 
 def profile_edit(request):
