@@ -19,9 +19,7 @@ class Recipe(models.Model):
         choices=RecipeChoices.choices
     )
 
-    ingredients = models.TextField(
-        help_text="Ingredients must be separated by a comma and space."
-    )
+    ingredients = models.TextField()
 
     instructions = models.TextField()
 

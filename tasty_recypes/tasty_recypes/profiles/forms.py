@@ -12,3 +12,8 @@ class ProfileCreationForm(forms.ModelForm):
             'last_name',
             'chef'
         ]
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta(ProfileCreationForm.Meta):
+        fields = '__all__'
