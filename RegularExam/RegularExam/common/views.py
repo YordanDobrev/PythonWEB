@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import BaseFormView
 
 from RegularExam.author.forms import AuthorCreateForm
+from RegularExam.author.models import Author
 from RegularExam.post.models import Post
 from RegularExam.utils import get_user_obj
 
@@ -16,30 +17,18 @@ class HomePage(ListView, BaseFormView):
 
     def get_template_names(self, **kwargs):
         profile = get_user_obj()
-        if not profile:
-            return ['index.html']
 
-        return ['dashboard.html']
+        if profile:
+            return ['index.html']
 
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
 
 
-# def dashboard(request):
-#     profile = get_user_obj()
-#     posts = Post.objects.filter(pk=profile.pk)
-#
-#     context = {
-#         'profile': profile,
-#         'posts': posts,
-#     }
-#
-#     render(request, 'dashboard.html', context)
-
 def dashboard(request):
     profile = get_user_obj()
-    posts = Post.objects.filter(pk=profile.pk)
+    posts = profile.post_set.all()
 
     context = {
         'profile': profile,

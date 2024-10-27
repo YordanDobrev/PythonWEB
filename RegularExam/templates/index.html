@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
     <main>
         <!-- Home page -->
@@ -7,7 +7,7 @@
             <h1>
                 Share the Snuggles and Giggles <br/>Post Your Sweet Furry Moments!
             </h1>
-            <img src="/static/images/cats.png" alt="home"/>
+            <img src="{% static 'images/cats.png' %}" alt="home"/>
         </section>
     </main>
 {% endblock %}
