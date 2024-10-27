@@ -23,7 +23,7 @@ class PostCreateView(CreateView):
     model = Post
     form_class = PostCreateForm
     template_name = 'post/create-post.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('dashboard')
 
     def form_valid(self, form):
         form.instance.author = get_user_obj()

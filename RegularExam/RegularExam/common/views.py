@@ -18,8 +18,7 @@ class HomePage(ListView, BaseFormView):
     def get_template_names(self, **kwargs):
         profile = get_user_obj()
 
-        if profile:
-            return ['index.html']
+        return ['index.html']
 
     def form_valid(self, form):
         form.save()

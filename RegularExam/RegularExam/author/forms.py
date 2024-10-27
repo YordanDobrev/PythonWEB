@@ -66,5 +66,6 @@ class AuthorUpdateForm(forms.ModelForm):
     )
 
     image_url = forms.CharField(
-        label='Profile Image URL:'
+        label='Profile Image URL:',
+        required=False
     )
