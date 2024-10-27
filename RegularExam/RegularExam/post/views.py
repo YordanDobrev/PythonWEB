@@ -1,10 +1,22 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, TemplateView
 
 from RegularExam.post.forms import PostCreateForm, PostUpdateForm, PostDeleteForm
 from RegularExam.post.models import Post
 from RegularExam.utils import get_user_obj
+
+
+def dashboard(request): #TRY TO FIX THE DASHBOARD
+    profile = get_user_obj()
+    posts = Post.objects.all()
+
+    context = {
+        'profile': profile,
+        'posts': posts,
+    }
+
+    return render(request, 'dashboard.html', context)
 
 
 class PostCreateView(CreateView):
@@ -44,15 +56,3 @@ class PostDetailsView(DetailView):
     model = Post
     template_name = 'post/details-post.html'
     pk_url_kwarg = 'id'
-
-
-def dashboard(request):
-    profile = get_user_obj()
-    posts = Post.objects.filter(pk=profile.pk)
-
-    context = {
-        'profile': profile,
-        'posts': posts,
-    }
-
-    return render(request, 'dashboard.html', context)

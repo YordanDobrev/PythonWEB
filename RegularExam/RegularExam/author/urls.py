@@ -4,7 +4,7 @@ from RegularExam.author import views
 
 urlpatterns = [
     path('create/', views.AuthorCreationView.as_view(), name='author_create'),
-    path('edit/', views.author_edit, name='author_edit'),
-    path('delete/', views.author_delete, name='author_delete'),
-    path('details/', views.author_details, name='author_details'),
+    path('edit/', views.AuthorUpdateView.as_view(), name='author_edit'),
+    path('delete/', views.AuthorDeleteView.as_view(), name='author_delete'),
+    path('details/', views.AuthorDetailsView.as_view(), name='author_details'),
 ]

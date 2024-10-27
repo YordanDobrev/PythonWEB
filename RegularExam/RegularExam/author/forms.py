@@ -36,3 +36,35 @@ class AuthorCreateForm(forms.ModelForm):
     ),
         label='Pet Number'
     )
+
+
+class AuthorUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ['first_name', 'last_name', 'pets_number', 'info', 'image_url']
+
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Enter your first name...'
+        }),
+        label='First Name'
+    )
+
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Enter your last name...'
+        }),
+        label='Last Name'
+    )
+
+    pets_number = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Enter the number of your pets...',
+        }
+    ),
+        label='Pet Number'
+    )
+
+    image_url = forms.CharField(
+        label='Profile Image URL:'
+    )

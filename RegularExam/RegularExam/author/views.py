@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 
-from RegularExam.author.forms import AuthorCreateForm
+from RegularExam.author.forms import AuthorCreateForm, AuthorUpdateForm
 from RegularExam.author.models import Author
+from RegularExam.utils import get_user_obj
 
 
 class AuthorCreationView(CreateView):
@@ -13,13 +14,29 @@ class AuthorCreationView(CreateView):
     success_url = reverse_lazy('home')
 
 
-def author_details(request):
-    return render(request, 'author/details-author.html')
+class AuthorDetailsView(DetailView):
+    model = Author
+    template_name = 'author/details-author.html'
+    context_object_name = 'author'
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
 
 
-def author_edit(request):
-    return render(request, 'author/edit-author.html')
+class AuthorUpdateView(UpdateView):
+    model = Author
+    form_class = AuthorUpdateForm
+    template_name = 'author/edit-author.html'
+    success_url = reverse_lazy('author_details')
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
 
 
-def author_delete(request):
-    return render(request, 'author/delete-author.html')
+class AuthorDeleteView(DeleteView):
+    model = Author
+    template_name = 'author/delete-author.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
