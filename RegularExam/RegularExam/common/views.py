@@ -4,7 +4,6 @@ from django.views.generic import ListView
 from django.views.generic.edit import BaseFormView
 
 from RegularExam.author.forms import AuthorCreateForm
-from RegularExam.author.models import Author
 from RegularExam.post.models import Post
 from RegularExam.utils import get_user_obj
 
