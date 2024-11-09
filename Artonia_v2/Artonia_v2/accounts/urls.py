@@ -1,6 +1,5 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
-
 from Artonia_v2.accounts.views import UserRegisterView
 
 urlpatterns = [

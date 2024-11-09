@@ -21,3 +21,4 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        abstract = True

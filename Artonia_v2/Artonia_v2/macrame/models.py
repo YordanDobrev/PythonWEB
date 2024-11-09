@@ -9,28 +9,23 @@ class Macrame(Product):
     user = models.ForeignKey(
         to=ArtoniaUser,
         on_delete=models.CASCADE,
-        related_name='macrames',
-        default=None,
     )
 
+    knot_type = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
 
-class KnotType(models.Model):
-    name = models.CharField(max_length=100)
-
-    description = models.TextField()
+    knot_description = models.TextField(
+        blank=True,
+        null=True,
+    )
 
     difficulty_level = models.CharField(
         max_length=20,
         choices=KnotChoices.choices,
         default="Beginner"
-    )
-
-    image_url = models.URLField()
-
-    macrame = models.ForeignKey(
-        to=Macrame,
-        on_delete=models.CASCADE,
-        related_name="knot_type",
     )
 
     def __str__(self):
