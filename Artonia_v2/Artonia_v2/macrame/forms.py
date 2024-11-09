@@ -29,3 +29,7 @@ class CreateMacrameForm(forms.ModelForm):
     knot_description = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'Short Knot Description...'
     }))
+
+
+class EditMacrameForm(CreateMacrameForm):
+    pass

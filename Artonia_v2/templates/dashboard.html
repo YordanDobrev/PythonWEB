@@ -21,11 +21,11 @@
                             alt="My cool macrame img"
                     />
                     <!-- Macrame title -->
-                    <h3 class="title">NEW MACRAME</h3>
+                    <h3 class="title">{{ macrame.name }}</h3>
                     <!-- macrame description -->
-                    <p class="description">{{ macrame.description|truncatewords:3 }}</p>
+                    <p class="description">{{ macrame.description|truncatewords:10 }}</p>
                     <!-- post details button -->
-                    <a class="details-btn" href="#">See More</a>
+                    <a class="details-btn" href="{% url 'details_macrame' macrame.id%}">See More</a>
                 </div>
                 {% endfor %}
             </section>
