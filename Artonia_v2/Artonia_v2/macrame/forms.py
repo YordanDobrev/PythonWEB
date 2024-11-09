@@ -1,6 +1,7 @@
 from django import forms
 
 from Artonia_v2.macrame.models import Macrame
+from Artonia_v2.mixins import ReadOnlyMixin
 
 
 class CreateMacrameForm(forms.ModelForm):
@@ -33,3 +34,15 @@ class CreateMacrameForm(forms.ModelForm):
 
 class EditMacrameForm(CreateMacrameForm):
     pass
+
+
+class MacrameDeleteForm(ReadOnlyMixin, forms.ModelForm):
+    class Meta:
+        model = Macrame
+        exclude = ['created_at', 'updated_at', 'user']
+
+    image_url = forms.CharField(
+        label='Post Image URL:'
+    )
+
+    read_only_fields = ['name', 'description', 'price', 'image_url', 'knot_type', 'knot_description']

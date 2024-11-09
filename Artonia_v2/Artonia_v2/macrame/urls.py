@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:pk>/', include([
         path('edit/', views.UpdateMacrameView.as_view(), name='edit_macrame'),
         path('details/', views.MacrameDetailsView.as_view(), name='details_macrame'),
+        path('delete/', views.MacrameDeleteView.as_view(), name='delete_macrame'),
     ]))]
