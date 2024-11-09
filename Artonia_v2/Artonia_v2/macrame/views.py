@@ -11,7 +11,7 @@ from Artonia_v2.utils import get_user_obj
 # class CreateMacrameView(CreateView):
 #     model = Product
 #     form_class = CreateMacrameForm
-#     template_name = 'macrame/create-macrame.html'
+#     template_name = 'macrame/create-art-painting.html'
 #     success_url = reverse_lazy('dashboard')
 #
 #     def form_valid(self, form):

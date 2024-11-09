@@ -22,7 +22,7 @@
 
         <nav>
             <!-- If there is a profile -->
-{#            {% get_user as profile %}#}
+            {#            {% get_user as profile %}#}
             {% if request.user.is_authenticated %}
                 <div class="user">
                     <a href="#">Dashboard</a>
@@ -33,6 +33,9 @@
                         <a href="{% url 'logout' %}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
                         </div>
+                        <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                            {% csrf_token %}
+                        </form>
                     {% endif %}
                 <!-- If profile has NOT been created -->
             {% else %}
