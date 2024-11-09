@@ -25,7 +25,7 @@
             {#            {% get_user as profile %}#}
             {% if request.user.is_authenticated %}
                 <div class="user">
-                    <a href="#">Dashboard</a>
+                    <a href="{% url 'dashboard' %}">Dashboard</a>
                     <a href="{% url 'create_macrame' %}">New Macrame</a>
                     <a href="#">New Art Painting</a>
                     <a href="#">Profile</a>

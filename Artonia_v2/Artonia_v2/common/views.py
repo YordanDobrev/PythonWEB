@@ -27,13 +27,11 @@ class HomePage(FormView):
 
 
 def dashboard(request):
-    profile = get_user_obj()
-    macrame = Macrame.objects.filter(user=profile)
-    art_paint = ArtPainting.objects.filter(user=profile)
+    macrames = Macrame.objects.filter(user=request.user)
+    art_paint = ArtPainting.objects.filter(user=request.user)
 
     context = {
-        'profile': profile,
-        'macrame': macrame,
+        'macrames': macrames,
         'art_paint': art_paint,
     }
 

@@ -3,31 +3,31 @@
 {% block content %}
     <main>
         <!-- Dashboard page -->
-{#        {% if posts %}#}
+        {% if macrames %}
             <!-- Display a heading if there are posts -->
-            <h2>Published Posts</h2>
-{#        {% else %}#}
+            <h2>Macrame</h2>
+        {% else %}
             <!-- Display a heading if there are NO posts -->
-{#            <h2>No published posts yet.</h2>#}
-{#        {% endif %}#}
+            <h2>No Macrames yet.</h2>
+        {% endif %}
             <section id="dashboard">
-{#                <!-- Display a div with information about each post (if any) -->#}
-{#                {% for post in posts %}#}
-{#                <!-- first post -->#}
-{#                <div class="post">#}
-{#                    <!-- post image -->#}
-{#                    <img#}
-{#                            src="{{ post.image_url }}"#}
-{#                            alt="My cool fluffy rabbits img"#}
-{#                    />#}
-{#                    <!-- post title -->#}
+                <!-- Display a div with information about each post (if any) -->
+                {% for macrame in macrames %}
+                <!-- first post -->
+                <div class="post">
+                    <!-- post image -->
+                    <img
+                            src="{{ macrame.image_url }}"
+                            alt="My cool macrame img"
+                    />
+                    <!-- Macrame title -->
                     <h3 class="title">NEW MACRAME</h3>
-{#                    <!-- post content -->#}
-{#                    <p class="description">{{ post.content|truncatewords:3 }}</p>#}
-{#                    <!-- post details button -->#}
-{#                    <a class="details-btn" href="{% url 'details_post' post.id %}">See More</a>#}
-{#                </div>#}
-{#                {% endfor %}#}
+                    <!-- macrame description -->
+                    <p class="description">{{ macrame.description|truncatewords:3 }}</p>
+                    <!-- post details button -->
+                    <a class="details-btn" href="#">See More</a>
+                </div>
+                {% endfor %}
             </section>
     </main>
 {% endblock %}
