@@ -2,18 +2,20 @@
 
 {% block content %}
     <main>
-        <!-- Dashboard page -->
+
+        <!-- Macrame Dashboard page -->
         {% if macrames %}
-            <!-- Display a heading if there are posts -->
-            <h2>Macrame</h2>
+            <!-- Display a heading if there are macrames -->
+            <h2>{{ macrames.count }} Macrames in total</h2>
         {% else %}
-            <!-- Display a heading if there are NO posts -->
+            <!-- Display a heading if there are NO macrames -->
             <h2>No Macrames yet.</h2>
         {% endif %}
-            <section id="dashboard">
-                <!-- Display a div with information about each post (if any) -->
-                {% for macrame in macrames %}
-                <!-- first post -->
+        <section id="dashboard">
+            <!-- Display a div with information about each macrame (if any) -->
+            {% for macrame in macrames %}
+                <!-- first macrame -->
+                {#the CSS class for post to be updated#}
                 <div class="post">
                     <!-- post image -->
                     <img
@@ -25,10 +27,40 @@
                     <!-- macrame description -->
                     <p class="description">{{ macrame.description|truncatewords:10 }}</p>
                     <!-- post details button -->
-                    <a class="details-btn" href="{% url 'details_macrame' macrame.id%}">See More</a>
+                    <a class="details-btn" href="{% url 'details_macrame' macrame.id %}">See More</a>
                 </div>
-                {% endfor %}
-            </section>
+            {% endfor %}
+        </section>
+
+        <!-- Art Paintings Dashboard page -->
+        {% if art_paint %}
+            <!-- Display a heading if there are Art Paintings -->
+            <h2>{{ art_paint.count }} Art Paintings in total</h2>
+        {% else %}
+            <!-- Display a heading if there are NO Art Paints -->
+            <h2>No Art Paintings yet.</h2>
+        {% endif %}
+        <section id="dashboard">
+            <!-- Display a div with information about each Art Painting (if any) -->
+            {% for art in art_paint %}
+                <!-- first art paintings -->
+                {#the CSS class for post to be updated#}
+                <div class="post">
+                    <!-- art image -->
+                    <img
+                            src="{{ art.image_url }}"
+                            alt="My cool Art Painting img"
+                    />
+                    <!-- Art Painting title -->
+                    <h3 class="title">{{ art.name }}</h3>
+                    <!-- Art description -->
+                    <p class="description">{{ art.description|truncatewords:10 }}</p>
+                    <!-- Art details button -->
+                    <a class="details-btn" href="">See More</a>
+                </div>
+            {% endfor %}
+        </section>
+
     </main>
 {% endblock %}
 

@@ -6,32 +6,20 @@ from Artonia_v2.common.models import Product
 
 
 class ArtPainting(Product):
-    user = models.ForeignKey(
-        to=ArtoniaUser,
-        on_delete=models.CASCADE,
-        related_name='art_painting',
-        default=None,
-    )
-
-
-class Technique(models.Model):
-    name = models.CharField(
-        max_length=100
-    )
-
-    description = models.TextField()
-
-    difficulty_level = models.CharField(
+    technique_name = models.CharField(
         max_length=20,
         choices=TechniqueChoice.choices,
         default="Other"
     )
-    image_url = models.URLField()
 
-    art_painting = models.ForeignKey(
-        ArtPainting,
-        on_delete=models.CASCADE,
-        related_name='art_painting',
+    technique_description = models.TextField(
+        blank=True,
+        null=True
+    )
+
+    user = models.ForeignKey(
+        to=ArtoniaUser,
+        on_delete=models.CASCADE
     )
 
     def __str__(self):

@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     "Artonia_v2.accounts.apps.AccountsConfig",
     "Artonia_v2.common.apps.CommonConfig",
     "Artonia_v2.macrame.apps.MacrameConfig",
-    "Artonia_v2.art_painting.apps.ArtPaintingConfig"
+    "Artonia_v2.art_painting.apps.ArtPaintingConfig",
+
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +140,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.ArtoniaUser'
 LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+

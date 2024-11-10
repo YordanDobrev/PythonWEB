@@ -6,11 +6,11 @@
         <section id="create">
             <div class="form">
                 <h2>New Macrame</h2>
-                <form class="create-form" method="POST">
-                    {{ form }}
+                <form class="label" method="POST">
+                    {{ form.as_p }}
                     {% csrf_token %}
                     <!-- form button -->
-                    <button type="submit">Publish</button>
+                    <button type="submit" class="button">Publish</button>
                 </form>
             </div>
         </section>
