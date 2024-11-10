@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-  --white-color:#ffffff;
+  --white-color: rgba(255, 0, 0, 0);
   --h2-color: rgb(240, 156, 47);
   --card-background: rgb(124, 112, 102);
   --card-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -47,7 +47,7 @@
   box-shadow: var(--card-box-shadow);
 -webkit-box-shadow: -4px 3px 25px 1px rgba(0,0,0,0.55);
 -moz-box-shadow: -4px 3px 25px 1px rgba(0,0,0,0.55);
- 
+
 }
 
 /* .post:hover {

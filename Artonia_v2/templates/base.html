@@ -1,5 +1,4 @@
 {% load static %}
-{#{% load get_user %}#}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,31 +12,32 @@
 <body>
 <div id="wrapper">
     <header>
-        <!-- Navigation -->
-
-        <!-- Logo image: a link to index/home page -->
+        <!-- Logo image: link to index/home page -->
         <a id="logo" href="{% url 'home' %}">
             <img id="logo-img" src="{% static 'images/Artonia Logo.jpg' %}" alt="logo"/>
+            <!-- Update this path to your actual logo image -->
         </a>
 
+        <!-- Navigation -->
         <nav>
-            <!-- If there is a profile -->
-            {#            {% get_user as profile %}#}
             {% if request.user.is_authenticated %}
                 <div class="user">
                     <a href="{% url 'dashboard' %}">Dashboard</a>
                     <a href="{% url 'create_macrame' %}">New Macrame</a>
                     <a href="#">New Art Painting</a>
                     <a href="#">Profile</a>
-                    {% if request.user.is_authenticated %}
-                        <a href="{% url 'logout' %}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
-                        </div>
-                        <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
-                            {% csrf_token %}
-                        </form>
-                    {% endif %}
-                <!-- If profile has NOT been created -->
+
+                    <!-- Logout Link -->
+                    <a href="{% url 'logout' %}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                </div>
+
+                <!-- Logout Form (hidden) -->
+                <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                    {% csrf_token %}
+                </form>
             {% else %}
                 <div class="guest">
                     <a href="{% url 'login' %}">Login</a>
@@ -46,14 +46,12 @@
             {% endif %}
         </nav>
     </header>
+
+    {% block content %}
+    {% endblock %}
 </div>
 
-{% block content %}
-{% endblock %}
-
-<!-- footer -->
-<footer>
-    <p>&copy; 2024 Artonia Team. All rights reserved.</p>
-</footer>
+<!-- Footer -->
+<footer>&copy;Artonia Team 2024. All rights reserved.</footer>
 </body>
 </html>
