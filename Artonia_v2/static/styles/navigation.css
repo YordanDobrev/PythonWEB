@@ -1,87 +1,145 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
 body {
-  color:#5e514d;
-  background: rgb(255,249,205);
-  background: linear-gradient(120deg, rgb(206 255 167 / 49%) 0%, rgb(215 171 235 / 55%) 100%);
-  margin: auto;
-  padding: 0;
-  overflow: auto;
-  width: 97vw;
-  font-family: 'Dancing Script', cursive;
+    /*color: #5e514d;*/
+    /*background: rgb(255, 249, 205);*/
+    /*background: linear-gradient(120deg, rgb(206 255 167 / 49%) 0%, rgb(215 171 235 / 55%) 100%);*/
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    width: 97vw;
+    font-family: 'Dancing Script', cursive;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0em 3em;
-  width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 3em;
+    width: 90vw;
 }
 
 nav {
- 
-  display: flex;
-  justify-content: space-between;
-  
+
+    display: flex;
+    justify-content: space-between;
+
 }
 
 
 #logo-img {
-  height: 80px;
- 
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
+#logo-img:hover {
+    transform: scale(1.05);
+}
+
+
 nav a {
-  font-size: 1.5rem;
-  color: #5e514d;
-  font-weight: 600;
+    font-size: 1.5rem;
+    color: #5e514d;
+    font-weight: 600;
 }
 
 header a {
-  padding: 0 10px;
-  text-decoration: none;
-  
-  
-}
-nav a:hover {
-  color: rgb(153, 60, 7);
-  text-decoration: underline;
-  font-size: 1.7rem;
+    padding: 0 10px;
+    text-decoration: none;
 
-  
+
+}
+
+nav a:hover {
+    color: rgb(153, 60, 7);
+    text-decoration: underline;
+    font-size: 1.7rem;
+
+
 }
 
 footer {
-  background-color: #f0f1e0;
-  color:  #5e514d;
-  font-weight: bolder;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-}
-footer p {
-  margin-top:-1px;
+    background-color: #f0f1e0;
+    color: #5e514d;
+    font-weight: bolder;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
 }
 
+footer p {
+    margin-top: -1px;
+}
 
 
 #home img {
-  display: block;
-  margin: auto;
-  height: 25%;
-  width: 25%;
-  transform: rotate(20deg);
+    display: block;
+    margin: auto;
+    height: 25%;
+    width: 25%;
+    transform: rotate(20deg);
 }
 
 #home h1 {
-  margin-top: 20px;
-  font-style: italic;
-  font-size: 60px;
-  font-weight: 600;
-  text-align: center;
-  color: rgb(153, 60, 7);
-  text-transform: capitalize;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(153, 60, 7);
+    text-transform: capitalize;
+}
+
+
+/* First, set up the background image container */
+.background-container {
+    background-image: url("../images/Art and Macrame.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Full viewport height */
+    position: relative;
+}
+
+/* Create the gradient overlay */
+.background-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.9) 0%,    /* More transparent at top */
+        rgba(255, 255, 255, 0.3) 20%,    /* More visible in middle */
+        rgba(255, 255, 255, 0.3) 80%,    /* More visible in middle */
+        rgba(255, 255, 255, 0.9) 100%    /* More transparent at bottom */
+    );
+    z-index: 1;
+}
+
+/* Container for your content */
+.content {
+    position: relative;
+    z-index: 2; /* Place content above the overlay */
+}
+
+/* Navigation styles */
+nav {
+    position: relative;
+    z-index: 3; /* Ensure nav stays on top */
+    /* Add your other nav styles */
+}
+
+/* Footer styles */
+footer {
+    position: relative;
+    z-index: 3; /* Ensure footer stays on top */
+    /* Add your other footer styles */
 }

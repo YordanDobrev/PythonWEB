@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=\, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/macrame-art-icon.svg' %}">
     <title>Artonia</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
     <header>
         <!-- Logo image: link to index/home page -->
         <a id="logo" href="{% url 'home' %}">
-            <img id="logo-img" src="{% static 'images/Artonia Logo.jpg' %}" alt="logo"/>
+            <img id="logo-img" src="{% static 'images/Artonia Circle Logo_2.JPG' %}" alt="logo"/>Artonia
             <!-- Update this path to your actual logo image -->
         </a>
 
@@ -25,7 +26,7 @@
                     <a href="{% url 'dashboard' %}">Dashboard</a>
                     <a href="{% url 'create_macrame' %}">New Macrame</a>
                     <a href="{% url 'create-art-painting' %}">New Art Painting</a>
-                    <a href="#">Profile</a>
+                    <a href="{% url 'user_details' user.pk %}">Profile</a>
 
                     <!-- Logout Link -->
                     <a href="{% url 'logout' %}"
@@ -47,8 +48,13 @@
         </nav>
     </header>
 
-    {% block content %}
-    {% endblock %}
+    <div class="background-container">
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
 </div>
 
 <!-- Footer -->

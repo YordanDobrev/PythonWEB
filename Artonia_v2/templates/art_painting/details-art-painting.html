@@ -9,21 +9,28 @@
                 <!-- Art Painting image -->
                 <img
                         id="details-img"
-                        src="#"
+                        src="{{ artpainting.image_url }}"
                         alt="My clever dog :)"
                 />
                 <!-- Art Painting title -->
-                <p id="details-title">Great Title</p> 
+                <p id="details-title">{{ artpainting.name }}</p>
                 <div id="info-wrapper">
                     <div id="details-description">
                         <!-- Art Painting content -->
-                        <p>Art Painting content to be added</p>
+                        <p>Description {{ artpainting.description }}</p>
                     </div>
-
+                    <div id="details-description">
+                        <!-- Art Painting content -->
+                        <p>Technique name: {{ artpainting.technique_name }}</p>
+                    </div>
+                    <div id="details-description">
+                        <!-- Art Painting content -->
+                        <p>Technique description: {{ artpainting.technique_description }}</p>
+                    </div>
                     <!--Edit and Delete buttons -->
                     <div id="action-buttons">
-                        <a href="{% url 'edit_art_painting' art_painting.id %}" id="edit-btn">Edit</a>
-                        <a href="{% url 'delete_art_painting' art_painting.id %}" id="delete-btn">Delete</a>
+                        <a href="{% url 'edit_art-painting' artpainting.pk %}" id="edit-btn">Edit</a>
+                        <a href="{% url 'delete_art-painting' artpainting.pk %}" id="delete-btn">Delete</a>
                     </div>
                 </div>
             </div>

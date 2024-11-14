@@ -1,6 +1,7 @@
 from django import forms
 
 from Artonia_v2.art_painting.models import ArtPainting
+from Artonia_v2.mixins import ReadOnlyMixin
 
 
 class CreateArtPaintingForm(forms.ModelForm):
@@ -27,18 +28,18 @@ class CreateArtPaintingForm(forms.ModelForm):
         'placeholder': 'Short technique description...'
     }))
 
-#
-# class EditMacrameForm(CreateMacrameForm):
-#     pass
-#
-#
-# class MacrameDeleteForm(ReadOnlyMixin, forms.ModelForm):
-#     class Meta:
-#         model = Macrame
-#         exclude = ['created_at', 'updated_at', 'user']
-#
-#     image_url = forms.CharField(
-#         label='Post Image URL:'
-#     )
-#
-#     read_only_fields = ['name', 'description', 'price', 'image_url', 'knot_type', 'knot_description']
+
+class EditArtPaintingForm(CreateArtPaintingForm):
+    pass
+
+
+class ArtPaintingDeleteForm(ReadOnlyMixin, forms.ModelForm):
+    class Meta:
+        model = ArtPainting
+        exclude = ['created_at', 'updated_at', 'user']
+
+    image_url = forms.CharField(
+        label='Post Image URL:'
+    )
+
+    read_only_fields = ['name', 'description', 'price', 'image_url', 'technique_name', 'technique_description']
