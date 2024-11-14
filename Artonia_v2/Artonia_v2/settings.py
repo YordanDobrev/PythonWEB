@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     "Artonia_v2.common.apps.CommonConfig",
     "Artonia_v2.macrame.apps.MacrameConfig",
     "Artonia_v2.art_painting.apps.ArtPaintingConfig",
-
-    'crispy_forms'
+    "Artonia_v2.workshops.apps.WorkshopsConfig",
 ]
 
 MIDDLEWARE = [
