@@ -4,38 +4,22 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-8">
+        <!-- Main content: Workshop details -->
+        <div class="workshop-current-details">
             {% if workshop.image_url %}
-                <img src="{{ workshop.image_url }}" class="img-fluid rounded mb-4" alt="{{ workshop.title }}">
+                <div class="workshop-current-image">
+                    <img src="{{ workshop.image_url }}" alt="{{ workshop.title }}">
+                </div>
             {% endif %}
-            <h1 class="mb-4">{{ workshop.title }}</h1>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <p class="card-text">{{ workshop.description }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Workshop Details</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <strong>Date:</strong><br>
-                            {{ workshop.date|date:"F j, Y" }}
-                        </li>
-                        <li class="mb-2">
-                            <strong>Price:</strong><br>
-                            ${{ workshop.price }}
-                        </li>
-                        <li class="mb-2">
-                            <strong>Capacity:</strong><br>
-                            {{ workshop.capacity }} spots
-                        </li>
-                    </ul>
-                    <button class="btn btn-primary w-100">Register Now</button>
-                </div>
-            </div>
+            <h2 class="workshop-current-details">{{ workshop.title }}</h2>
+            <p class="workshop-current-details">{{ workshop.description }}</p>
+            <h5 class="workshop-current-details">Workshop Details</h5>
+            <ul class="workshop-current-details">
+                <li><strong>Date:</strong> {{ workshop.date|date:"F j, Y" }}</li>
+                <li><strong>Price:</strong> ${{ workshop.price }}</li>
+                <li><strong>Capacity:</strong> {{ workshop.capacity }} spots</li>
+            </ul>
+            <button class="view-current-button">Register Now</button>
         </div>
     </div>
 {% endblock %}
