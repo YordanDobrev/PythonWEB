@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from Artonia_v2.accounts.models import ArtoniaUser
 
 
 class Workshop(models.Model):
@@ -8,7 +9,7 @@ class Workshop(models.Model):
     )
 
     instructor = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        to=ArtoniaUser,
         on_delete=models.CASCADE,
     )
 

@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/', include('Artonia_v2.accounts.urls')),
     path('art/', include('Artonia_v2.art_painting.urls')),
     path('macrame/', include('Artonia_v2.macrame.urls')),
+    path('workshops/', include('Artonia_v2.workshops.urls')),
 
     # path('login/', LoginView.as_view(), name='login'),
     # path('logout/', LogoutView.as_view(), name='logout'),

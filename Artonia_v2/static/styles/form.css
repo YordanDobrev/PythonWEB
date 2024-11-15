@@ -43,7 +43,7 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
-  font-family: 'Alkalami', serif;
+  font-family: cursive;
 }
 .form textarea {
   background: var(--light-input-background);
@@ -55,11 +55,11 @@
   min-height: 50px;
   margin-bottom: 10px;
   padding: 15px;
-  font-family: 'Alkalami', serif;
+  font-family: cursive;
 
 }
 .form button {
-  font-family: 'Kaushan Script', cursive;
+  font-family: cursive;
   text-transform: uppercase;
   outline: 0;
   background: rgb(188, 177, 168);
