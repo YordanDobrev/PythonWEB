@@ -4,6 +4,9 @@ from Artonia_v2.accounts.models import ArtoniaUser
 
 
 class Workshop(models.Model):
+    class Meta:
+        ordering = ('date',)
+
     title = models.CharField(
         max_length=200
     )
@@ -19,7 +22,7 @@ class Workshop(models.Model):
 
     prerequisites = models.TextField()
 
-    date = models.DateTimeField()
+    date = models.DateField()
 
     duration_hours = models.DecimalField(
         max_digits=4,

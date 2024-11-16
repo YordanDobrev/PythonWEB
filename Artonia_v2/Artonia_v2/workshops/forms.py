@@ -1,3 +1,6 @@
+from django.db.models.functions import datetime
+from django.utils import timezone
+
 from Artonia_v2.mixins import ReadOnlyMixin
 from Artonia_v2.workshops.models import Workshop
 from django import forms
@@ -24,8 +27,8 @@ class CreateWorkshopForm(forms.ModelForm):
     }))
 
     date = forms.DateField(
-        input_formats=['%Y-%m-%d', '%d-%m-%Y'],
-        widget=forms.DateInput(attrs={'type': 'date'})
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        initial=timezone.now().date
     )
 
     duration_hours = forms.IntegerField(
@@ -41,12 +44,15 @@ class CreateWorkshopForm(forms.ModelForm):
     is_online = forms.BooleanField(
         widget=forms.CheckboxInput(attrs={
             'class': 'form-check-input',
-        })
+        }),
+        required=False
     )
 
     meeting_url = forms.CharField(widget=forms.URLInput(attrs={
         'placeholder': 'Meeting URL...'
-    }))
+    }),
+        required=False
+    )
 
     capacity = forms.IntegerField(
         widget=forms.NumberInput(attrs={
@@ -65,11 +71,15 @@ class CreateWorkshopForm(forms.ModelForm):
     }))
 
 
+class UpdateWorkshopForm(CreateWorkshopForm):
+    pass
+
+
 class DeleteWorkshopForm(ReadOnlyMixin, forms.ModelForm):
     class Meta:
         model = Workshop
-        exclude = ['instructor', 'participants']
+        exclude = ['instructor', 'participants', 'is_online']
 
     read_only_fields = ['title', 'description', 'materials_provided', 'prerequisites', 'date', 'duration_hours',
-                        'location', 'is_online', 'meeting_url', 'capacity', 'price', 'image_url'
+                        'location', 'meeting_url', 'capacity', 'price', 'image_url'
                         ]

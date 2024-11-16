@@ -5,6 +5,7 @@ from Artonia_v2.art_painting.models import ArtPainting
 from Artonia_v2.forms import CustomUserForm
 from Artonia_v2.macrame.models import Macrame
 from Artonia_v2.utils import get_user_obj
+from Artonia_v2.workshops.models import Workshop
 
 
 # Create your views here.
@@ -19,6 +20,7 @@ class HomePage(FormView):
         context['macrame_list'] = Macrame.objects.all()
         context['art_painting_list'] = ArtPainting.objects.all()
         context['profile'] = profile
+        context['workshop_list'] = Workshop.objects.all()
         return context
 
     def form_valid(self, form):
