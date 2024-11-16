@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from Artonia_v2.accounts.models import ArtoniaUser
 
@@ -70,7 +69,7 @@ class WorkshopRegistration(models.Model):
     )
 
     participant = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        to=ArtoniaUser,
         on_delete=models.CASCADE
     )
 

@@ -7,7 +7,9 @@
     background-repeat: no-repeat;
     min-height: 100vh;
     width: 100%;
-    padding-bottom: 20px; /* Add padding to prevent content from going under footer */
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -18,36 +20,100 @@ body {
     font-family: cursive;
 }
 
+/*header {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    padding: 0.5em 3em;*/
+/*    width: 90vw;*/
+/*    background: red;*/
+/*    position: relative;*/
+/*    z-index: 3;*/
+/*    margin: 0 auto;*/
+/*    border-radius: 0 0 10px 10px;*/
+/*    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);*/
+/*}*/
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0em 3em;
+    padding: 0.5em 3em;
     width: 90vw;
+    position: relative;
+    z-index: 3;
+    margin: 0 auto;
+    border-radius: 0 0 10px 10px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    /* Artistic background with multiple layers */
+    background: /* Subtle watercolor texture */ linear-gradient(120deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(240, 241, 224, 0.6) 50%,
+    rgba(255, 255, 255, 0.7) 100%
+    ),
+        /* Abstract brush strokes */ radial-gradient(
+            circle at 20% 50%,
+            rgba(240, 241, 224, 0.4) 0%,
+            transparent 50%
+    ),
+    radial-gradient(
+            circle at 80% 50%,
+            rgba(240, 241, 224, 0.4) 0%,
+            transparent 50%
+    );
+    /* Add a subtle border effect */
+    border-bottom: 1px solid rgba(240, 241, 224, 0.3);
+    /* Add box shadow for depth */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* Smooth transition for any hover effects */
+    transition: all 0.3s ease;
 }
 
+/* Optional: Add hover effect to the entire header */
+header:hover {
+    background: linear-gradient(120deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(240, 241, 224, 0.7) 50%,
+    rgba(255, 255, 255, 0.8) 100%
+    ),
+    radial-gradient(
+            circle at 20% 50%,
+            rgba(240, 241, 224, 0.5) 0%,
+            transparent 50%
+    ),
+    radial-gradient(
+            circle at 80% 50%,
+            rgba(240, 241, 224, 0.5) 0%,
+            transparent 50%
+    );
+}
+
+
 nav {
-
-    background: transparent; /* Remove any existing background */
-    /* If you want a slight overlay to ensure text readability */
-    background: rgba(255, 255, 255, 0.1); /* Optional: adds slight white overlay */
-    /* Or if you prefer a gradient overlay */
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-
+    background: transparent;
+    position: relative;
+    z-index: 3;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 nav a {
-    color: #333; /* Adjust color as needed */
-    /* Optional: add text shadow for better readability */
+    font-size: 1.5rem;
+    color: #5e514d;
+    font-weight: 600;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease, font-size 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 #logo {
     display: flex;
-    align-items: center; /* Vertically centers items */
-    justify-content: center; /* Horizontally centers items */
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    gap: 12px; /* Space between logo and text */
+    gap: 12px;
 }
 
 #logo-img {
@@ -55,65 +121,56 @@ nav a {
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px;
+}
+
+#logo-img:hover {
+    transform: scale(1.1);
 }
 
 .logo-text {
-    color: #4B0082; /* Purple color matching your logo */
-    font-size: 1.5rem; /* Adjust size as needed */
-    font-family: cursive; /* Matches the style in your image */
-}
-
-nav a {
+    color: #4B0082;
     font-size: 1.5rem;
-    color: #5e514d;
-    font-weight: 600;
-}
-
-header a {
-    padding: 0 10px;
-    text-decoration: none;
-
-
+    font-family: cursive;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 nav a:hover {
     color: rgb(153, 60, 7);
     text-decoration: underline;
     font-size: 1.7rem;
-
-
+    background: rgba(255, 255, 255, 0.2);
 }
 
 footer {
-    background: transparent; /* Remove solid background color */
-    /* If you want a subtle overlay for text readability */
+    background: transparent;
     background: linear-gradient(rgba(240, 241, 224, 0), rgba(240, 241, 224, 0.7));
     color: #5e514d;
     font-weight: bolder;
     text-align: center;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
     left: 0;
     width: 100%;
     height: 20px;
-    /* Optional: add text shadow for better readability */
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    z-index: 3;
 }
 
 footer p {
     margin-top: -1px;
-    /* Optional: if you need extra text contrast */
     position: relative;
     z-index: 2;
 }
-
 
 #home img {
     display: block;
     margin: auto;
     height: 25%;
     width: 25%;
-    transform: rotate(20deg);
+    border-radius: 20%;
 }
 
 #home h1 {
@@ -126,18 +183,17 @@ footer p {
     text-transform: capitalize;
 }
 
-
-/* First, set up the background image container */
 .background-container {
     background-image: url("../images/Art and Macrame.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh; /* Full viewport height */
+    border-radius: 3%;
+    min-height: 100vh;
     position: relative;
+    flex: 1;
 }
 
-/* Create the gradient overlay */
 .background-container::before {
     content: '';
     position: absolute;
@@ -147,27 +203,16 @@ footer p {
     bottom: 0;
     background: linear-gradient(
             to bottom,
-            rgba(255, 255, 255, 0.9) 0%, /* More transparent at top */ rgba(255, 255, 255, 0.3) 20%, /* More visible in middle */ rgba(255, 255, 255, 0.3) 80%, /* More visible in middle */ rgba(255, 255, 255, 0.9) 100% /* More transparent at bottom */
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.3) 20%,
+            rgba(255, 255, 255, 0.3) 80%,
+            rgba(255, 255, 255, 0.9) 100%
     );
     z-index: 1;
 }
 
-/* Container for your content */
 .content {
     position: relative;
-    z-index: 2; /* Place content above the overlay */
+    z-index: 2;
 }
 
-/* Navigation styles */
-nav {
-    position: relative;
-    z-index: 3; /* Ensure nav stays on top */
-    /* Add your other nav styles */
-}
-
-/* Footer styles */
-footer {
-    position: relative;
-    z-index: 3; /* Ensure footer stays on top */
-    /* Add your other footer styles */
-}

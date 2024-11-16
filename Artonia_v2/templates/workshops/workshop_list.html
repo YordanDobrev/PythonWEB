@@ -5,19 +5,21 @@
     <div class="workshops-header">
 
         {% if user.is_authenticated %}
-                <h1>Available Workshops</h1> <span><a href="{% url 'workshop-create' %}" class="create-button">Create New Workshop</a></span>
+            {#            <h1>Available Workshops</h1>#}
+            <span><a href="{% url 'workshop-create' %}" class="create-button">Create New Workshop</a></span>
         {% endif %}
     </div>
+    <h1 style="justify-self: center">Available Workshops</h1>
     <div class="workshops-grid">
         {% for workshop in workshops %}
             <div class="workshop-card">
+                <h3 style="color: darkblue">{{ workshop.title }}</h3>
                 {% if workshop.image_url %}
                     <div class="workshop-image">
                         <img src="{{ workshop.image_url }}" alt="{{ workshop.title }}">
                     </div>
                 {% endif %}
                 <div class="workshop-content">
-                    <h2>{{ workshop.title }}</h2>
                     <p>{{ workshop.description|truncatewords:30 }}</p>
                     <ul class="workshop-details">
                         <li>Date: {{ workshop.date|date:"F j, Y" }}</li>
