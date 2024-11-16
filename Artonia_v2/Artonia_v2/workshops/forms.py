@@ -1,3 +1,4 @@
+from Artonia_v2.mixins import ReadOnlyMixin
 from Artonia_v2.workshops.models import Workshop
 from django import forms
 
@@ -63,3 +64,12 @@ class CreateWorkshopForm(forms.ModelForm):
         'placeholder': 'Put Macrame URL...'
     }))
 
+
+class DeleteWorkshopForm(ReadOnlyMixin, forms.ModelForm):
+    class Meta:
+        model = Workshop
+        exclude = ['instructor', 'participants']
+
+    read_only_fields = ['title', 'description', 'materials_provided', 'prerequisites', 'date', 'duration_hours',
+                        'location', 'is_online', 'meeting_url', 'capacity', 'price', 'image_url'
+                        ]

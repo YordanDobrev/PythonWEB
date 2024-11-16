@@ -30,10 +30,15 @@ class Workshop(models.Model):
         max_length=200
     )
 
-    is_online = models.BooleanField(default=False)
+    is_online = models.BooleanField(
+        default=False,
+        null=True,
+        blank=True
+    )
 
     meeting_url = models.URLField(
-        blank=True
+        blank=True,
+        null=True,
     )
 
     capacity = models.PositiveIntegerField()
@@ -46,7 +51,7 @@ class Workshop(models.Model):
     image_url = models.URLField()
 
     participants = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
+        to=ArtoniaUser,
         related_name='workshops_enrolled',
         through='WorkshopRegistration'
     )
