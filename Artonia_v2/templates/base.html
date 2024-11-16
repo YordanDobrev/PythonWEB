@@ -23,15 +23,15 @@
         <!-- Navigation -->
         <nav>
             {% if request.user.is_authenticated %}
-                <div class="user">
-                    <a href="{% url 'dashboard' %}">Dashboard</a>
-                    <a href="{% url 'create_macrame' %}">New Macrame</a>
-                    <a href="{% url 'create-art-painting' %}">New Art Painting</a>
-                    <a href="{% url 'workshop-list' %}">Workshops</a>
-                    <a href="{% url 'user_details' user.pk %}">Profile</a>
+                <div>
+                    <a style="text-decoration: none" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a style="text-decoration: none" href="{% url 'create_macrame' %}">New Macrame</a>
+                    <a style="text-decoration: none" href="{% url 'create-art-painting' %}">New Art Painting</a>
+                    <a style="text-decoration: none" href="{% url 'workshop-list' %}">Workshops</a>
+                    <a style="text-decoration: none" href="{% url 'user_details' user.pk %}">Profile</a>
 
                     <!-- Logout Link -->
-                    <a href="{% url 'logout' %}"
+                    <a style="text-decoration: none" href="{% url 'logout' %}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout
                     </a>
@@ -43,8 +43,8 @@
                 </form>
             {% else %}
                 <div class="guest">
-                    <a href="{% url 'login' %}">Login</a>
-                    <a href="{% url 'register' %}">Create Profile</a>
+                    <a style="text-decoration: none" href="{% url 'login' %}">Login</a>
+                    <a style="text-decoration: none" href="{% url 'register' %}">Create Profile</a>
                 </div>
             {% endif %}
         </nav>

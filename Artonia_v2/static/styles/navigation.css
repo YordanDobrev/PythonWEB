@@ -20,19 +20,6 @@ body {
     font-family: cursive;
 }
 
-/*header {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    padding: 0.5em 3em;*/
-/*    width: 90vw;*/
-/*    background: red;*/
-/*    position: relative;*/
-/*    z-index: 3;*/
-/*    margin: 0 auto;*/
-/*    border-radius: 0 0 10px 10px;*/
-/*    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);*/
-/*}*/
 
 header {
     display: flex;
@@ -100,8 +87,9 @@ nav {
 
 nav a {
     font-size: 1.5rem;
+    font-family: fantasy;
     color: #5e514d;
-    font-weight: 600;
+    font-weight: 100;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
     transition: color 0.3s ease, font-size 0.3s ease;
     padding: 5px 10px;
@@ -139,7 +127,7 @@ nav a {
 
 nav a:hover {
     color: rgb(153, 60, 7);
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 1.7rem;
     background: rgba(255, 255, 255, 0.2);
 }
