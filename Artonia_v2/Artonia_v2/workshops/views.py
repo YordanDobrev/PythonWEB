@@ -1,8 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-
-from Artonia_v2.workshops.forms import CreateWorkshopForm, DeleteWorkshopForm, UpdateWorkshopForm
-from Artonia_v2.workshops.models import Workshop
+from Artonia_v2.workshops.forms import CreateWorkshopForm, DeleteWorkshopForm, UpdateWorkshopForm, \
+    WorkshopRegistrationForm
+from Artonia_v2.workshops.models import Workshop, WorkshopRegistration
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -69,3 +72,55 @@ class WorkshopUpdateView(LoginRequiredMixin, UpdateView):
 
     def form_invalid(self, form):
         return self.form_valid(form)
+
+
+@login_required
+def workshop_register(request, pk):
+    workshop = get_object_or_404(Workshop, pk=pk)
+
+    # Initialize form with workshop and user
+    if request.method == 'POST':
+        form = WorkshopRegistrationForm(
+            request.POST,
+            user=request.user,
+            workshop=workshop
+        )
+        if form.is_valid():
+            registration = form.save(commit=False)
+            registration.participant = request.user
+            registration.workshop = workshop
+            registration.save()
+            messages.success(request, 'Successfully registered for the workshop!')
+            return redirect('workshop-detail', pk=workshop.pk)
+        else:
+            messages.error(request, 'Registration failed. Please check the errors below.')
+
+    else:
+        form = WorkshopRegistrationForm(
+            user=request.user,
+            workshop=workshop
+        )
+
+    return render(request, 'workshops/workshop_register.html', {
+        'workshop': workshop,
+        'form': form,
+    })
+
+
+@login_required
+def cancel_registration(request, pk):
+    workshop = get_object_or_404(Workshop, pk=pk)
+
+    if request.method == 'POST':
+        registration = get_object_or_404(
+            WorkshopRegistration,
+            workshop=workshop,
+            participant=request.user
+        )
+        registration.delete()
+        messages.success(request, "Your workshop registration has been cancelled.")
+        return redirect('workshop-list')
+
+    return render(request, 'workshops/workshop_cancel_registration.html', {
+        'workshop': workshop
+    })

@@ -21,7 +21,11 @@
             </ul>
             <a class="view-button" href="{% url 'workshop-edit' workshop.pk %}">Edit Workshop</a>
             <a class="view-button" href="{% url 'workshop-delete' workshop.pk %}">Delete Workshop</a>
-            {#            <button class="view-current-button">Register Now1</button>#}
+            <a class="view-button" href="{% url 'workshop-register' workshop.pk %}">Register Workshop</a>
+            {% if request.user in workshop.participants.all %}
+                <a class="view-button" href="{% url 'workshop-cancel-register' workshop.pk %}">Cancel Register
+                    Workshop</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

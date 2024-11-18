@@ -1,8 +1,9 @@
+from django.core.exceptions import ValidationError
 from django.db.models.functions import datetime
 from django.utils import timezone
 
 from Artonia_v2.mixins import ReadOnlyMixin
-from Artonia_v2.workshops.models import Workshop
+from Artonia_v2.workshops.models import Workshop, WorkshopRegistration
 from django import forms
 
 
@@ -83,3 +84,27 @@ class DeleteWorkshopForm(ReadOnlyMixin, forms.ModelForm):
     read_only_fields = ['title', 'description', 'materials_provided', 'prerequisites', 'date', 'duration_hours',
                         'location', 'meeting_url', 'capacity', 'price', 'image_url'
                         ]
+
+
+class WorkshopRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = WorkshopRegistration
+        fields = []
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        self.workshop = kwargs.pop('workshop', None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        existing_registration = WorkshopRegistration.objects.filter(
+            participant=self.user,
+            workshop=self.workshop
+        ).exists()
+
+        if existing_registration:
+            raise forms.ValidationError("You have already registered for this workshop.")
+
+        return cleaned_data
