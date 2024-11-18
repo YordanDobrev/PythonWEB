@@ -1,42 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Register for {{ workshop.title }}</h2>
 
-                        <div class="mb-4">
-                            <h5>Workshop Details</h5>
-                            <ul class="list-unstyled">
-                                <li><i class="bi bi-calendar"></i> {{ workshop.date }}</li>
-                                <li><i class="bi bi-clock"></i> Duration: {{ workshop.duration_hours }}</li>
-                                <li><i class="bi bi-cash"></i> Price: ${{ workshop.price }}</li>
-                            </ul>
-                        </div>
+    <div class="workshop-current-card">
+        <h2 class="workshops-current-header">Register for {{ workshop.title }}</h2>
 
-                        {% if form.errors %}
-                            <div class="alert alert-danger">
-                                {% for error in form.non_field_errors %}
-                                    <p>{{ error }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %} 
-
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form }}
-
-                            <div class="mt-4">
-                                <button type="submit" class="btn btn-primary">Confirm Registration</button>
-                                <a href="{% url 'workshop-detail' workshop.pk %}" class="btn btn-secondary">Cancel</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="workshop-current-details">
+            <h3>Workshop Details</h3>
+            <ul>
+                <li><strong>Description:</strong> {{ workshop.description }}</li>
+                <li><strong>Date:</strong> {{ workshop.date|date:"j F, Y" }}</li>
+                <li><strong>Workshop duration(in hours):</strong> {{ workshop.duration_hours }}</li>
+                <li><strong>Workshop location:</strong> {{ workshop.location }}</li>
+                <li><i class="bi bi-cash"></i> Price: ${{ workshop.price }}</li>
+            </ul>
         </div>
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+
+            <div class="workshop-buttons">
+                <button type="submit" class="view-button">Confirm Registration</button>
+                <button type="submit" class="view-button" style="background-color: darkred"><a href="{% url 'workshop-detail' workshop.pk %}" style="color: white">Abort Registration</a></button>
+
+            </div>
+        </form>
     </div>
+
 {% endblock %}

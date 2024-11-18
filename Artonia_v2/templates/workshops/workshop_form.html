@@ -1,31 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}{% if form.instance.pk %}Edit Workshop{% else %}Create Workshop{% endif %}{% endblock %}
-
 {% block content %}
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h1 class="card-title text-center mb-4">
-                        {% if form.instance.pk %}
-                            Edit Workshop
-                        {% else %}
-                            Create New Workshop
-                        {% endif %}
-                    </h1>
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form }}
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">
-                                {% if form.instance.pk %}Update{% else %}Create{% endif %} Workshop
-                            </button>
-                            <a href="{% url 'workshop-list' %}" class="btn btn-secondary">Cancel</a>
-                        </div>
-                    </form>
-                </div>
+    <div class="workshop-form-card">
+        <h1 class="workshop-form-header">Create New Workshop</h1>
+        <form class="workshop-form-fields" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <div class="workshop-form-buttons">
+                <button type="submit" class="btn btn-primary">Create Workshop</button>
+                <button type="submit" class="view-button" style="background-color: darkred"><a
+                        href="{% url 'workshop-list'%}" style="color: white">Abort Workshop Creation</a>
+                </button>
             </div>
-        </div>
+        </form>
     </div>
 {% endblock %}

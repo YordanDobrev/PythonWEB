@@ -1,7 +1,4 @@
-from django.core.exceptions import ValidationError
-from django.db.models.functions import datetime
 from django.utils import timezone
-
 from Artonia_v2.mixins import ReadOnlyMixin
 from Artonia_v2.workshops.models import Workshop, WorkshopRegistration
 from django import forms
@@ -10,7 +7,7 @@ from django import forms
 class CreateWorkshopForm(forms.ModelForm):
     class Meta:
         model = Workshop
-        fields = '__all__'
+        exclude = ('participants',)
 
     title = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Workshop name...'}))
@@ -46,7 +43,8 @@ class CreateWorkshopForm(forms.ModelForm):
         widget=forms.CheckboxInput(attrs={
             'class': 'form-check-input',
         }),
-        required=False
+        required=False,
+        label='Online Workshop?',
     )
 
     meeting_url = forms.CharField(widget=forms.URLInput(attrs={
@@ -68,7 +66,7 @@ class CreateWorkshopForm(forms.ModelForm):
     )
 
     image_url = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Put Macrame URL...'
+        'placeholder': 'Put Workshop Image URL...'
     }))
 
 

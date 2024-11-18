@@ -41,7 +41,7 @@ class WorkshopDeleteView(LoginRequiredMixin, DeleteView):
     model = Workshop
     form_class = DeleteWorkshopForm
     pk_url_kwarg = 'pk'
-    template_name = 'workshops/workshop-delete.html'
+    template_name = 'workshops/workshop_delete.html'
     success_url = reverse_lazy('workshop-list')
 
     def get_context_data(self, **kwargs):

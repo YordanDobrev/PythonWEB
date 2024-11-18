@@ -268,3 +268,144 @@
     font-weight: bold;
     border-radius: 4px;
 }
+
+.workshop-form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    color: forestgreen;
+    font-family: fantasy;
+    font-weight: normal;
+}
+
+.workshop-form-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(1px);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.workshop-form-image-preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.workshop-form-image-preview img {
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.workshop-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between input fields */
+    margin: 20px;
+    list-style: none;
+}
+
+.workshop-form-fields label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+}
+
+.workshop-form-fields input,
+.workshop-form-fields textarea,
+.workshop-form-fields select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.workshop-form-fields input:focus,
+.workshop-form-fields textarea:focus,
+.workshop-form-fields select:focus {
+    border-color: forestgreen;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+}
+
+.workshop-form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.workshop-form-buttons button,
+.workshop-form-buttons input[type="submit"] {
+    justify-content: center;
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    color: #fff;
+    background-color: #00b318;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.workshop-form-buttons button:hover,
+.workshop-form-buttons input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Modern, clean checkbox styling */
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none; /* Remove default checkbox styling */
+    position: relative;
+}
+
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.form-check-input:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+}
+
+.form-check-input:hover {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Optional: If you want to add a label next to the checkbox */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
