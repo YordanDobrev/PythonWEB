@@ -9,7 +9,7 @@
             <span><a href="{% url 'workshop-create' %}" class="create-button">Create New Workshop</a></span>
         {% endif %}
     </div>
-    <h1 style="justify-self: center">Available Workshops</h1>
+    <h1 style="justify-self: center; font-family: fantasy; font-weight: normal">Available Workshops</h1>
     <div class="workshops-grid">
         {% for workshop in workshops %}
             <div class="workshop-card">
@@ -25,6 +25,7 @@
                 <div class="workshop-content">
                     <p>{{ workshop.description|truncatewords:30 }}</p>
                     <ul class="workshop-details">
+                        <li>Date: {{ workshop.location }}</li>
                         <li>Date: {{ workshop.date|date:"F j, Y" }}</li>
                         <li>Price: ${{ workshop.price }}</li>
                         <li>Available Spots: {{ workshop.capacity }}</li>

@@ -78,7 +78,6 @@ class WorkshopUpdateView(LoginRequiredMixin, UpdateView):
 def workshop_register(request, pk):
     workshop = get_object_or_404(Workshop, pk=pk)
 
-    # Initialize form with workshop and user
     if request.method == 'POST':
         form = WorkshopRegistrationForm(
             request.POST,
@@ -91,7 +90,7 @@ def workshop_register(request, pk):
             registration.workshop = workshop
             registration.save()
             messages.success(request, 'Successfully registered for the workshop!')
-            return redirect('workshop-detail', pk=workshop.pk)
+            return redirect('workshop-list')
         else:
             messages.error(request, 'Registration failed. Please check the errors below.')
 
