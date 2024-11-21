@@ -1,68 +1,194 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#    <main>#}
+{##}
+{#        <!-- Macrame Dashboard page -->#}
+{#        {% if macrames %}#}
+{#            <!-- Display a heading if there are macrames -->#}
+{#            <h2>{{ macrames.count }} Macrames in total</h2>#}
+{#        {% else %}#}
+{#            <!-- Display a heading if there are NO macrames -->#}
+{#            <h2>No Macrames yet.</h2>#}
+{#        {% endif %}#}
+{#        <section id="dashboard">#}
+{#            <!-- Display a div with information about each macrame (if any) -->#}
+{#            {% for macrame in macrames %}#}
+{#                <!-- first macrame -->#}
+{#the CSS class for post to be updated#}
+{#                <div class="post">#}
+{#                    <!-- post image -->#}
+{#                    <img#}
+{#                            src="{{ macrame.image_url }}"#}
+{#                            alt="My cool macrame img"#}
+{#                    />#}
+{#                    <!-- Macrame title -->#}
+{#                    <h3 class="title">{{ macrame.name }}</h3>#}
+{#                    <h3 class="title" style="color: #ffb700">$ {{ macrame.price }}</h3>#}
+{#                    <!-- macrame description -->#}
+{#                    <p class="description">{{ macrame.description|truncatewords:10 }}</p>#}
+{#                    <!-- post details button -->#}
+{#                    <a class="details-btn" href="{% url 'details_macrame' macrame.pk %}">See More</a>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </section>#}
+{##}
+{#        <!-- Art Paintings Dashboard page -->#}
+{#        {% if art_paint %}#}
+{#            <!-- Display a heading if there are Art Paintings -->#}
+{#            <h2>{{ art_paint.count }} Art Paintings in total</h2>#}
+{#        {% else %}#}
+{#            <!-- Display a heading if there are NO Art Paints -->#}
+{#            <h2>No Art Paintings yet.</h2>#}
+{#        {% endif %}#}
+{#        <section id="dashboard">#}
+{#            <!-- Display a div with information about each Art Painting (if any) -->#}
+{#            {% for art in art_paint %}#}
+{#                <!-- first art paintings -->#}
+{#the CSS class for post to be updated#}
+{#                <div class="post">#}
+{#                    <!-- art image -->#}
+{#                    <img#}
+{#                            src="{{ art.image_url }}"#}
+{#                            alt="My cool Art Painting img"#}
+{#                    />#}
+{#                    <!-- Art Painting title -->#}
+{#                    <h3 class="title">{{ art.name }}</h3>#}
+{#                    <h3 class="title" style="color: #ffb700">$ {{ art.price }}</h3>#}
+{#                    <!-- Art description -->#}
+{#                    <p class="description">{{ art.description|truncatewords:10 }}</p>#}
+{#                    <!-- Art details button -->#}
+{#                    <a class="details-btn" href="{% url 'details_art-painting' art.pk %}">See More</a>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </section>#}
+
+{#    </main>#}
+{#{% endblock %}#}
+
 {% extends 'base.html' %}
 
 {% block content %}
-    <main>
 
-        <!-- Macrame Dashboard page -->
+    <div class="dashboard-container">
+
+        <div class="workshops-header">
+            <span><a href="{% url 'create_macrame' %}" class="create-button">Create New Macrame</a></span>
+            <span style="margin-left: 10px"><a href="{% url 'create-art-painting' %}" class="create-button">Create New Art Painting</a></span>
+        </div>
+        {#        <h1 style="text-align: center; font-family: fantasy; font-weight: normal">My Dashboard</h1>#}
+
+        <section class="registered-workshops">
+            <h2 class="workshops-current-header">Workshops I'm Registered For</h2>
+            {% if registered_workshops %}
+                <div class="workshops-grid">
+                    {% for workshop in registered_workshops %}
+                        <div class="workshop-card">
+                            <h3 style="color: darkblue">{{ workshop.title }}</h3>
+                            {% if workshop.image_url %}
+                                <div class="workshop-image">
+                                    <img src="{{ workshop.image_url }}" alt="{{ workshop.title }}">
+                                </div>
+                            {% endif %}
+                            <div class="workshop-content">
+                                <p>{{ workshop.description|truncatewords:30 }}</p>
+                                <ul class="workshop-details">
+                                    <li>Location: {{ workshop.location }}</li>
+                                    <li>Date: {{ workshop.date|date:"F j, Y" }}</li>
+                                    <li>Price: ${{ workshop.price }}</li>
+                                </ul>
+                                <a href="{% url 'workshop-detail' workshop.pk %}" class="view-button">View Details</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-workshops">You haven't registered for any workshops yet.</p>
+            {% endif %}
+        </section>
+
         {% if macrames %}
-            <!-- Display a heading if there are macrames -->
-            <h2>{{ macrames.count }} Macrames in total</h2>
-        {% else %}
-            <!-- Display a heading if there are NO macrames -->
-            <h2>No Macrames yet.</h2>
-        {% endif %}
-        <section id="dashboard">
-            <!-- Display a div with information about each macrame (if any) -->
-            {% for macrame in macrames %}
-                <!-- first macrame -->
-                {#the CSS class for post to be updated#}
-                <div class="post">
-                    <!-- post image -->
-                    <img
-                            src="{{ macrame.image_url }}"
-                            alt="My cool macrame img"
-                    />
-                    <!-- Macrame title -->
-                    <h3 class="title">{{ macrame.name }}</h3>
-                    <h3 class="title" style="color: #ffb700">$ {{ macrame.price }}</h3>
-                    <!-- macrame description -->
-                    <p class="description">{{ macrame.description|truncatewords:10 }}</p>
-                    <!-- post details button -->
-                    <a class="details-btn" href="{% url 'details_macrame' macrame.pk %}">See More</a>
-                </div>
-            {% endfor %}
-        </section>
+            <section class="registered-workshops">
+                <h2 class="workshops-current-header">My Products</h2>
 
-        <!-- Art Paintings Dashboard page -->
-        {% if art_paint %}
-            <!-- Display a heading if there are Art Paintings -->
-            <h2>{{ art_paint.count }} Art Paintings in total</h2>
-        {% else %}
-            <!-- Display a heading if there are NO Art Paints -->
-            <h2>No Art Paintings yet.</h2>
-        {% endif %}
-        <section id="dashboard">
-            <!-- Display a div with information about each Art Painting (if any) -->
-            {% for art in art_paint %}
-                <!-- first art paintings -->
-                {#the CSS class for post to be updated#}
-                <div class="post">
-                    <!-- art image -->
-                    <img
-                            src="{{ art.image_url }}"
-                            alt="My cool Art Painting img"
-                    />
-                    <!-- Art Painting title -->
-                    <h3 class="title">{{ art.name }}</h3>
-                    <h3 class="title" style="color: #ffb700">$ {{ art.price }}</h3>
-                    <!-- Art description -->
-                    <p class="description">{{ art.description|truncatewords:10 }}</p>
-                    <!-- Art details button -->
-                    <a class="details-btn" href="{% url 'details_art-painting' art.pk %}">See More</a>
-                </div>
-            {% endfor %}
-        </section>
+                {% if macrames %}
+                    <div class="workshops-grid">
+                        {% for macrame in macrames %}
+                            <div class="workshop-card">
+                                <h3 style="color: darkgreen">{{ macrame.name }}</h3>
+                                {% if macrame.image_url %}
+                                    <div class="workshop-image">
+                                        <img src="{{ macrame.image_url }}" alt="{{ macrame.name }}">
+                                    </div>
+                                {% endif %}
+                                <div class="workshop-content">
+                                    <p>{{ macrame.description|truncatewords:30 }}</p>
+                                    <ul class="workshop-details">
+                                        <li>Price: {{ macrame.price }} lv.</li>
+                                    </ul>
+                                    <div>
+                                        <a href="{% url 'details_macrame' macrame.pk %}" class="view-button">View
+                                            Details</a>
+                                        <a href="{% url 'edit_macrame' macrame.pk %}" class="edit-button">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
 
-    </main>
+                        {% for arts in art_paint %}
+                            <div class="workshop-card">
+                                <h3 style="color: darkgreen">{{ arts.name }}</h3>
+                                {% if arts.image_url %}
+                                    <div class="workshop-image">
+                                        <img src="{{ arts.image_url }}" alt="{{ arts.name }}">
+                                    </div>
+                                {% endif %}
+                                <div class="workshop-content">
+                                    <p>{{ arts.description|truncatewords:30 }}</p>
+                                    <ul class="workshop-details">
+                                        <li>Price: {{ arts.price }} lv.</li>
+                                    </ul>
+                                    <div>
+                                        <a href="{% url 'details_art-painting' arts.pk %}" class="view-button">View
+                                            Details</a>
+                                        <a href="{% url 'edit_art-painting' arts.pk %}" class="edit-button">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                {% else %}
+                    <p>You haven't created any Macrames or Art Paintings yet.</p>
+                {% endif %}
+            </section>
+        {% endif %}
+
+        {% if not registered_workshops and not is_instructor %}
+            <div class="empty-dashboard">
+                <p>Welcome to your dashboard!</p>
+                <p>Explore available workshops or learn about becoming an instructor.</p>
+                <a href="{% url 'workshop-list' %}" class="cta-button">Browse Workshops</a>
+            </div>
+        {% endif %}
+
+        {% if is_paginated %}
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="pagination-link">&laquo; First</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Previous</a>
+                {% endif %}
+
+                <span class="current-page">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Last &raquo;</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
 {% endblock %}
-

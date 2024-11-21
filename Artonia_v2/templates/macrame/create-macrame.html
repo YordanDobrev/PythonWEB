@@ -3,14 +3,14 @@
 {% block content %}
     <main>
         <!-- Add Macrame Form -->
-        <section id="create">
-            <div class="form">
-                <h2>New Macrame</h2>
-                <form class="label" method="POST">
-                    {{ form.as_p }}
+        <section>
+            <div class="workshop-form-card">
+                <h2 class="workshop-form-header">New Macrame</h2>
+                <form class="workshop-form-fields" method="POST">
+                    {{ form }}
                     {% csrf_token %}
                     <!-- form button -->
-                    <button type="submit" class="button">Publish</button>
+                    <button type="submit" class="view-button">Publish</button>
                 </form>
             </div>
         </section>

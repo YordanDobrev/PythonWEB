@@ -16,14 +16,14 @@
 
             <div class="workshop-current-details">
                 <ul>
-                    <li ><strong>Instructor:</strong> {{ workshop.instructor }}</li>
-                    <li ><strong>Description:</strong> {{ workshop.description }}</li>
+                    <li><strong>Instructor:</strong> {{ workshop.instructor }}</li>
+                    <li><strong>Description:</strong> {{ workshop.description }}</li>
                     <li><strong>Prerequisites:</strong> {{ workshop.prerequisites }}</li>
                     <li><strong>Provided materials:</strong> {{ workshop.materials_provided }}</li>
                     <li><strong>Workshop duration(in hours):</strong> {{ workshop.duration_hours }}</li>
                     <li><strong>Workshop location:</strong> {{ workshop.location }}</li>
                     {% if is_online %}
-                    <li><strong>Meeting URL:</strong> {{ workshop.meeting_url }}</li>
+                        <li><strong>Meeting URL:</strong> {{ workshop.meeting_url }}</li>
                     {% endif %}
                     <li><strong>Date:</strong> {{ workshop.date|date:"j F, Y" }}</li>
                     <li><strong>Price:</strong> {{ workshop.price }} lv.</li>
@@ -34,8 +34,8 @@
 
             <div class="workshop-buttons">
                 {% if is_instructor %}
-                <a class="view-button" href="{% url 'workshop-edit' workshop.pk %}">Edit Workshop</a>
-                <a class="view-button" href="{% url 'workshop-delete' workshop.pk %}">Delete Workshop</a>
+                    <a class="view-button" href="{% url 'workshop-edit' workshop.pk %}">Edit Workshop</a>
+                    <a class="view-button" href="{% url 'workshop-delete' workshop.pk %}">Delete Workshop</a>
                 {% endif %}
                 {% if request.user in workshop.participants.all %}
                     <a class="view-button" style="background-color: darkred"

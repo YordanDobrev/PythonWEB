@@ -3,14 +3,14 @@
 {% block content %}
     <main>
         <!-- Add Art Painting Form -->
-        <section id="create">
-            <div class="form">
-                <h2>New Art Painting</h2>
-                <form class="create-form" method="POST">
+        <section>
+            <div class="workshop-form-card">
+                <h2 class="workshop-form-header">New Art Painting</h2>
+                <form class="workshop-form-fields" method="POST">
                     {{ form }}
                     {% csrf_token %}
                     <!-- form button -->
-                    <button type="submit">Publish</button>
+                    <button type="submit" class="view-button">Publish</button>
                 </form>
             </div>
         </section>

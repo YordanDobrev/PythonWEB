@@ -39,7 +39,7 @@ class WorkshopDetailView(DetailView):
 class WorkshopCreateView(LoginRequiredMixin, CreateView):
     model = Workshop
     form_class = CreateWorkshopForm
-    template_name = 'workshops/workshop_form.html'
+    template_name = 'workshops/workshop_create.html'
     success_url = reverse_lazy('workshop-list')
 
     def form_valid(self, form):

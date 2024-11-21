@@ -1,6 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from Artonia_v2.art_painting.models import ArtPainting
 from Artonia_v2.forms import CustomUserForm
 from Artonia_v2.macrame.models import Macrame
@@ -28,13 +29,13 @@ class HomePage(FormView):
         return super().form_valid(form)
 
 
-def dashboard(request):
-    macrames = Macrame.objects.filter(user=request.user)
-    art_paint = ArtPainting.objects.filter(user=request.user)
+class UserDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'dashboard.html'
 
-    context = {
-        'macrames': macrames,
-        'art_paint': art_paint,
-    }
-
-    return render(request, 'dashboard.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['registered_workshops'] = Workshop.objects.filter(participants=self.request.user)
+        context['macrames'] = Macrame.objects.filter(user=self.request.user)
+        context['art_paint'] = ArtPainting.objects.filter(user=self.request.user)
+        context['is_instructor'] = self.request.user.groups.filter(name='Instructor').exists()
+        return context
