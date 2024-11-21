@@ -31,10 +31,12 @@
                 </ul>
             </div>
 
+
             <div class="workshop-buttons">
+                {% if is_instructor %}
                 <a class="view-button" href="{% url 'workshop-edit' workshop.pk %}">Edit Workshop</a>
                 <a class="view-button" href="{% url 'workshop-delete' workshop.pk %}">Delete Workshop</a>
-
+                {% endif %}
                 {% if request.user in workshop.participants.all %}
                     <a class="view-button" style="background-color: darkred"
                        href="{% url 'workshop-cancel-register' workshop.pk %}">Cancel Registration</a>

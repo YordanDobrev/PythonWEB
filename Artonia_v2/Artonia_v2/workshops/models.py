@@ -77,13 +77,5 @@ class WorkshopRegistration(models.Model):
         auto_now_add=True
     )
 
-    payment_status = models.CharField(max_length=20, choices=[
-        ('pending', 'Pending'),
-        ('completed', 'Completed'),
-        ('refunded', 'Refunded')
-    ])
-
-    attended = models.BooleanField(default=False)
-
     class Meta:
         unique_together = ['workshop', 'participant']

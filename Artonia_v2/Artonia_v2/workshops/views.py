@@ -20,10 +20,20 @@ class WorkshopListView(ListView):
     context_object_name = 'workshops'
     paginate_by = 6
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_instructor'] = self.request.user.groups.filter(name='Instructor').exists()
+        return context
+
 
 class WorkshopDetailView(DetailView):
     model = Workshop
     template_name = 'workshops/workshop_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_instructor'] = self.request.user.groups.filter(name='Instructor').exists()
+        return context
 
 
 class WorkshopCreateView(LoginRequiredMixin, CreateView):
@@ -65,6 +75,7 @@ class WorkshopUpdateView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['workshop_list'] = Workshop.objects.all()
+
         return context
 
     def get_initial(self):

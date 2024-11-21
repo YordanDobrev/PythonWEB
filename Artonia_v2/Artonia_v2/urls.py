@@ -17,18 +17,13 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("Artonia_v2.common.urls")),
-    path('accounts/', include('Artonia_v2.accounts.urls')),
-    path('art/', include('Artonia_v2.art_painting.urls')),
-    path('macrame/', include('Artonia_v2.macrame.urls')),
-    path('workshops/', include('Artonia_v2.workshops.urls')),
-
-    # path('login/', LoginView.as_view(), name='login'),
-    # path('logout/', LogoutView.as_view(), name='logout'),
-
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('', include("Artonia_v2.common.urls")),
+                  path('accounts/', include('Artonia_v2.accounts.urls')),
+                  path('art/', include('Artonia_v2.art_painting.urls')),
+                  path('macrame/', include('Artonia_v2.macrame.urls')),
+                  path('workshops/', include('Artonia_v2.workshops.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

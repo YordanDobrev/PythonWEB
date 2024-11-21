@@ -1,5 +1,4 @@
 from django.db import models
-
 from Artonia_v2.accounts.models import ArtoniaUser
 from Artonia_v2.art_painting.choices import TechniqueChoice
 from Artonia_v2.common.models import Product

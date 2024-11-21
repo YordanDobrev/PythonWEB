@@ -4,8 +4,7 @@
 {% block content %}
     <div class="workshops-header">
 
-        {% if user.is_authenticated %}
-            {#            <h1>Available Workshops</h1>#}
+        {% if is_instructor %}
             <span><a href="{% url 'workshop-create' %}" class="create-button">Create New Workshop</a></span>
         {% endif %}
     </div>
