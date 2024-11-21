@@ -8,6 +8,21 @@ class CustomUserCreationForm(UserCreationForm):
         model = get_user_model()
         fields = ('username', 'email',)
 
+    username = forms.CharField(
+        help_text=None
+    )
+
+    password1 = forms.CharField(
+        help_text=None,
+        widget=forms.PasswordInput,
+        label='Password',
+    )
+    password2 = forms.CharField(
+        help_text=None,
+        widget=forms.PasswordInput,
+        label='Confirm Password',
+    )
+
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:

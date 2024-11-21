@@ -3,15 +3,20 @@
 {% block content %}
     <main>
         <!-- Edit Workshop Form -->
-        <section id="edit">
-            <div class="form">
-                <h2>Edit Workshop</h2>
+        <section>
+            <div class="workshop-form-card">
+                <h2 class="workshop-form-header">Edit Workshop</h2>
 
-                <form class="edit-form" method="POST" action="">
+                <form class="workshop-form-fields" method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
                     <!-- form button -->
-                    <button type="submit">Edit</button>
+                    <div class="workshop-form-buttons">
+                        <button type="submit">Edit</button>
+                        <button type="submit" class="view-button" style="background-color: darkred"><a
+                                href="{% url 'workshop-detail' workshop.pk %}" style="color: white">Cancel</a>
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>

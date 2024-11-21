@@ -2,16 +2,21 @@
 
 {% block content %}
     <main>
-        <!-- Edit Macrame Form -->
-        <section id="edit">
-            <div class="form">
-                <h2>Edit Macrame</h2>
+        <!-- Edit Macramé Form -->
+        <section>
+            <div class="workshop-current-card">
+                <h2 class="workshops-current-header">Edit Macrame</h2>
 
-                <form class="edit-form" method="POST" action="">
+                <form class="workshop-form-fields" method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
                     <!-- form button -->
-                    <button type="submit">Edit</button>
+                    <div class="workshop-form-buttons">
+                        <button class="view-button" type="submit">Edit</button>
+                        <button type="submit" class="view-button" style="background-color: darkred"><a
+                                href="{% url 'details_macrame' macrame.pk%}" style="color: white">Cancel</a>
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>

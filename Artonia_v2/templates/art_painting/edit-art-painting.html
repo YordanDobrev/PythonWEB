@@ -11,7 +11,12 @@
                     {% csrf_token %}
                     {{ form }}
                     <!-- form button -->
-                    <button type="submit">Edit</button>
+                    <div class="workshop-buttons">
+                        <button class="view-button" type="submit">Edit</button>
+                        <button type="submit" class="view-button" style="background-color: darkred"><a
+                                href="{% url 'details_art-painting' artpainting.pk %}" style="color: white">Cancel</a>
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>
