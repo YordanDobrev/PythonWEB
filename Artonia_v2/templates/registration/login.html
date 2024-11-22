@@ -4,8 +4,8 @@
     <div class="workshop-current-card">
         <form class='workshop-form-fields' method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <div class="button-container">
+            {{ form }}
+            <div class="workshop-form-buttons">
                 <button class="login-button">Login</button>
             </div>
             <p class="register-link">

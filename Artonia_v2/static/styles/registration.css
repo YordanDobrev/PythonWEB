@@ -67,12 +67,13 @@
 /* Additional elements */
 .register-link {
     margin-top: 15px;
-    color: #8b7355;
+    color: black;
     font-style: italic;
+    font-size: 23px;
 }
 
 .register-link a {
-    color: #6a5acd;
+    color: #2c0cf4;
     text-decoration: none;
 }
 

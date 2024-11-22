@@ -7,7 +7,7 @@ from django import forms
 class CreateWorkshopForm(forms.ModelForm):
     class Meta:
         model = Workshop
-        exclude = ('participants',)
+        exclude = ('participants','instructor')
 
     title = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Workshop name...'}))

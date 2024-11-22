@@ -32,7 +32,8 @@ class WorkshopDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['is_instructor'] = self.request.user.groups.filter(name='Instructor').exists()
+        workshop = self.get_object()
+        context['is_creator'] = self.request.user == workshop.instructor
         return context
 
 
@@ -44,6 +45,7 @@ class WorkshopCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        form.instance.instructor = self.request.user
         return super().form_valid(form)
 
 

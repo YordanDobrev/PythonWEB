@@ -33,7 +33,7 @@
 
 
             <div class="workshop-buttons">
-                {% if is_instructor %}
+                {% if is_creator %}
                     <a class="view-button" href="{% url 'workshop-edit' workshop.pk %}">Edit Workshop</a>
                     <a class="view-button" href="{% url 'workshop-delete' workshop.pk %}">Delete Workshop</a>
                 {% endif %}
