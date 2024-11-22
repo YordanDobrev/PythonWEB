@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, DetailView, UpdateView
 from Artonia_v2.accounts.forms import CustomUserCreationForm, UserUpdateForm
 
@@ -25,7 +25,11 @@ class UserUpdateView(UpdateView):
     model = UserModel
     form_class = UserUpdateForm
     template_name = 'registration/edit-account.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('user_details')
+    pk_field = 'pk'
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def get_success_url(self):
+        return reverse('user_details', kwargs={'pk': self.object.pk})

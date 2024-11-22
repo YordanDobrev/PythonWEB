@@ -108,9 +108,7 @@ margin-bottom: 0;
   font-size: 30px;
   color: rgb(190, 103, 2);
 }
-.search-result > .post {
-  scale: 0.5;
-}
+
 .search-result {
   margin-top: -50px;
   display: flex;

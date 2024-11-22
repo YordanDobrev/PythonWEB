@@ -5,31 +5,31 @@
     <main>
         <!-- Profile Details Section -->
 
-        <section id="details">
-            <div id="details-wrapper">
-                <h2>Profile Details</h2>
+        <section>
+            <div class="workshop-form-card">
+                <h2 class="workshop-form-header">Profile Details</h2>
 
                 <!-- if the user has provided a profile image link -->
                 {% if user.image_url %}
                     <img
-                            id="details-img"
+                            class="workshop-current-image"
                             src="{{ user.image_url }}"
                             alt="profile img"
                     />
                 {% else %}
                     <!-- if the user has NO profile image link -->
                     <img
-                            id="details-img"
+                            class="workshop-current-image"
                             alt="profile img"
                             src="https://t.ly/XISsv"
                     />
                 {% endif %}
                 <!-- User's full name -->
-                <p id="details-title">Full Name: {{ user.first_name }} {{ user.last_name }}</p>
-                <p id="details-title">Username: {{ user.username }}</p>
+                <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+                <p>Username: {{ user.username }}</p>
 
-                <div id="info-wrapper">
-                    <div id="details-description">
+                <div>
+                    <div>
                         {% if user.description %}
                             <p>
                                 Description: <span>{{ user.description }}</span>
@@ -41,9 +41,9 @@
                     </div>
 
                     <!--Edit and Delete buttons -->
-                    <div id="action-buttons">
-                        <a href="{% url 'user_edit' user.pk %}" id="edit-btn">Edit</a>
-                        <a href="#" id="delete-btn">Delete</a>
+                    <div class="workshop-form-buttons">
+                        <a class="view-button" href="{% url 'user_edit' user.pk %}" >Edit Profile</a>
+                        <a class="view-button" href="#" >Delete Profile</a>
                     </div>
                 </div>
             </div>
