@@ -11,5 +11,6 @@ urlpatterns = [
     path('<int:pk>/', include([
         path('details/', views.UserDetailsView.as_view(), name='user_details'),
         path('edit/', views.UserUpdateView.as_view(), name='user_edit'),
+        path('delete/', views.UserDeleteView.as_view(), name='user_delete'),
     ])),
 ]

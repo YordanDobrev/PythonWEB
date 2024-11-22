@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+
     <main>
-        <section id="edit">
-            <div class="form">
+        <section>
+            <div class="workshop-form-card">
                 <h1>You are about to delete your Author's Profile</h1>
                 <!-- Delete Author's Profile Form -->
 
-                <form id="delete" class="register-form" method="POST" action="">
+                <form class="workshop-form-fields" method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
                     <!-- Confirm Button -->
-                    <button type="submit">Confirm</button>
+                    <div>
+                        <button class="view-button" type="submit">Confirm</button>
+                        <button type="submit" class="view-button" style="background-color: darkred"><a
+                                href="{% url 'user_details' request.user.pk %}" style="color: white">Cancel</a>
+                        </button>
+                    </div>
                 </form>
             </div>
             <!-- End Delete Form -->

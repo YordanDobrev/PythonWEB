@@ -13,6 +13,7 @@
                 {% if user.image_url %}
                     <img
                             class="workshop-current-image"
+                            style="border-radius: 4%"
                             src="{{ user.image_url }}"
                             alt="profile img"
                     />
@@ -20,6 +21,7 @@
                     <!-- if the user has NO profile image link -->
                     <img
                             class="workshop-current-image"
+                            style="border-radius: 4%"
                             alt="profile img"
                             src="https://t.ly/XISsv"
                     />
@@ -42,8 +44,8 @@
 
                     <!--Edit and Delete buttons -->
                     <div class="workshop-form-buttons">
-                        <a class="view-button" href="{% url 'user_edit' user.pk %}" >Edit Profile</a>
-                        <a class="view-button" href="#" >Delete Profile</a>
+                        <a class="view-button" href="{% url 'user_edit' user.pk %}">Edit Profile</a>
+                        <a class="view-button" href="{% url 'user_delete' user.pk %}">Delete Profile</a>
                     </div>
                 </div>
             </div>
