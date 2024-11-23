@@ -3,34 +3,32 @@
 {% block content %}
     <main>
         <!-- Art Painting Details -->
-        <section id="details">
-            <div id="details-wrapper">
-                <h2>Art Painting Details</h2>
-                <!-- Art Painting image -->
+        <section>
+            <div class="workshop-current-card">
+                <h2 class="workshop-form-header">Art Painting Details</h2>
                 <img
-                        id="details-img"
+                        class="workshop-current-image"
+                        style="border-radius: 7px"
                         src="{{ artpainting.image_url }}"
-                        alt="My clever dog :)"
+                        alt={{ artpainting.name }}
                 />
-                <!-- Art Painting title -->
-                <p id="details-title">{{ artpainting.name }}</p>
-                <div id="info-wrapper">
-                    <div id="details-description">
-                        <!-- Art Painting content -->
+                <p>{{ artpainting.name }}</p>
+                <div class="workshop-current-details">
+                    <div>
                         <p>Description {{ artpainting.description }}</p>
                     </div>
-                    <div id="details-description">
-                        <!-- Art Painting content -->
+                    <div>
                         <p>Technique name: {{ artpainting.technique_name }}</p>
                     </div>
-                    <div id="details-description">
-                        <!-- Art Painting content -->
+                    <div>
                         <p>Technique description: {{ artpainting.technique_description }}</p>
+                        <p>Technique description: {{ artpainting.created_at }}</p>
                     </div>
                     <!--Edit and Delete buttons -->
-                    <div id="action-buttons">
-                        <a href="{% url 'edit_art-painting' artpainting.pk %}" id="edit-btn">Edit</a>
-                        <a href="{% url 'delete_art-painting' artpainting.pk %}" id="delete-btn">Delete</a>
+                    <div class="workshop-buttons">
+                        <a class="view-button" href="{% url 'edit_art-painting' artpainting.pk %}">Edit</a>
+                        <a class="view-button" style="background-color: darkred"
+                           href="{% url 'delete_art-painting' artpainting.pk %}">Delete</a>
                     </div>
                 </div>
             </div>

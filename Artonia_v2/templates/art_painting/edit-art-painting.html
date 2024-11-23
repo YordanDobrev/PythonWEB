@@ -3,11 +3,11 @@
 {% block content %}
     <main>
         <!-- Edit Art Painting Form -->
-        <section id="edit">
-            <div class="form">
-                <h2>Edit Art Painting</h2>
+        <section>
+            <div class="workshop-form-card">
+                <h2 class="workshop-form-header">Edit Art Painting</h2>
 
-                <form class="edit-form" method="POST" action="">
+                <form class="workshop-form-fields" method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
                     <!-- form button -->

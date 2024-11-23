@@ -3,28 +3,32 @@
 {% block content %}
     <main>
         <!-- Macrame Details -->
-        <section id="details">
-            <div id="details-wrapper">
-                <h2>Macrame Details</h2>
+        <section>
+            <div class="workshop-current-card">
+                <h2 class="workshop-form-header">Macrame Details</h2>
                 <!-- Macrame image -->
                 <img
-                        id="details-img"
+                        class="workshop-current-image"
+                        style="border-radius: 7px"
                         src="{{ macrame.image_url }}"
-                        alt="My clever dog :)"
+                        alt="{{ macrame.name }}"
                 />
                 <!-- macrame title -->
-                <p id="details-title">{{ macrame.name }}</p> 
-                <div id="info-wrapper">
-                    <div id="details-description">
+                <p>{{ macrame.name }}</p>
+                <div class="workshop-current-details">
+                    <div>
                         <!-- macrame content -->
-                        <p>{{macrame.description}}</p>
+                        <p>{{ macrame.description }}</p>
+                        <p>{{ macrame.knot_type }}</p>
+                        <p>{{ macrame.knot_description }}</p>
+                        <p>{{ macrame.difficulty_level }}</p>
+                        <p>{{ macrame.created_at }}</p>
                     </div>
-
-                    <!--Edit and Delete buttons -->
-                    <div id="action-buttons">
-                        <a href="{% url 'edit_macrame' macrame.pk %}" id="edit-btn">Edit</a>
-                        <a href="{% url 'delete_macrame' macrame.pk %}" id="delete-btn">Delete</a>
-                    </div>
+                </div>
+                <div class="workshop-buttons">
+                    <a class="view-button" href="{% url 'edit_macrame' macrame.pk %}">Edit</a>
+                    <a class="view-button" style="background-color: darkred"
+                       href="{% url 'delete_macrame' macrame.pk %}">Delete</a>
                 </div>
             </div>
         </section>

@@ -1,22 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+
     <main>
         <!-- Delete Art Painting Form -->
-        <section id="edit">
-            <div class="form">
-                <h2>Delete Art Painting</h2>
+        <section>
+            <div class="workshop-form-card">
+                <h2 class="workshop-form-header">Delete Art Painting</h2>
 
-                <form class="edit-form" method="POST" action="">
+                <form class="workshop-form-fields" method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
                     <!-- form button -->
-                    <button type="submit">Delete</button>
+                    <div class="workshop-form-buttons">
+                        <button type="submit">Delete</button>
+                        <button class="view-button" style="background-color: darkred"><a
+                                href="{% url 'dashboard' %}" style="color: white">Cancel</a>
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>
     </main>
-    
+
 {% endblock %}
 
