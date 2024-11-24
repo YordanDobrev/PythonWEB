@@ -25,6 +25,7 @@
             {% if request.user.is_authenticated %}
                 <div>
                     <a style="text-decoration: none" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a style="text-decoration: none" href="{% url 'public_artwork_list' %}">Artworks</a>
                     <a style="text-decoration: none" href="{% url 'workshop-list' %}">Workshops</a>
                     <a style="text-decoration: none" href="{% url 'user_details' user.pk %}">Profile</a>
 

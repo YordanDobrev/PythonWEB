@@ -26,4 +26,5 @@ urlpatterns = [
                   path('art/', include('Artonia_v2.art_painting.urls')),
                   path('macrame/', include('Artonia_v2.macrame.urls')),
                   path('workshops/', include('Artonia_v2.workshops.urls')),
+                  path('artwork/', include('Artonia_v2.artwork.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

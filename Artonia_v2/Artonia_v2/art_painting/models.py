@@ -21,5 +21,23 @@ class ArtPainting(Product):
         on_delete=models.CASCADE
     )
 
+    is_public = models.BooleanField(
+        default=False
+    )
+
+    views_count = models.PositiveIntegerField(
+        default=0
+    )
+
+    likes = models.ManyToManyField(
+        to=ArtoniaUser,
+        related_name='liked_paintings',
+        blank=True
+    )
+
+    @property
+    def like_count(self):
+        return self.likes.count()
+
     def __str__(self):
         return self.name

@@ -1,7 +1,10 @@
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
+
 from Artonia_v2.art_painting.models import ArtPainting
 from Artonia_v2.forms import CustomUserForm
 from Artonia_v2.macrame.models import Macrame
@@ -39,3 +42,20 @@ class UserDashboardView(LoginRequiredMixin, TemplateView):
         context['art_paint'] = ArtPainting.objects.filter(user=self.request.user)
         context['is_instructor'] = self.request.user.groups.filter(name='Instructor').exists()
         return context
+
+
+@login_required
+def toggle_artwork_visibility(request, pk, artwork_type):
+    if artwork_type == 'macrame':
+        artwork = get_object_or_404(Macrame, pk=pk)
+    else:
+        artwork = get_object_or_404(ArtPainting, pk=pk)
+
+    if request.method == 'POST':
+        artwork.is_public = not artwork.is_public
+        artwork.save()
+
+        status = "public" if artwork.is_public else "private"
+        messages.success(request, f'Your {artwork_type} is now {status}.')
+
+    return redirect('dashboard')

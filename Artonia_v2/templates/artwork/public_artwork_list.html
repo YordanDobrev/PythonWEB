@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="justify-self: center; font-family: fantasy; font-weight: normal">Public Artworks</h1>
+    <div class="workshops-grid">
+        {% for creator_name, macrames in macrames_by_creator.items %}
+            {% for macrame in macrames %}
+                <div class="workshop-card">
+                    <h3 style="color: darkblue">{{ macrame.name }}</h3>
+                    {% if macrame.image_url %}
+                        <div class="workshop-image">
+                            <img src="{{ macrame.image_url }}" alt="{{ macrame.name }}">
+                        </div>
+                    {% endif %}
+                    <div class="workshop-content">
+                        <p>Creator: {{ creator_name }}</p>
+                        <p>Description: {{ macrame.description|truncatewords:30 }}</p>
+                        <ul class="workshop-details">
+                            <li>Knot type: {{ macrame.knot_type }}</li>
+                            <li>Price: ${{ macrame.price }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-workshops">No artworks</p>
+            {% endfor %}
+        {% endfor %}
+
+        {% for creator_name, arts in arts_by_creator.items %}
+            {% for art in arts %}
+                <div class="workshop-card">
+                    <h3 style="color: darkblue">{{ art.name }}</h3>
+                    {% if art.image_url %}
+                        <div class="workshop-image">
+                            <img src="{{ art.image_url }}" alt="{{ art.name }}">
+                        </div>
+                    {% endif %}
+                    <div class="workshop-content">
+                        <p>Creator: {{ creator_name }}</p>
+                        <p>Description: {{ art.description|truncatewords:30 }}</p>
+                        <ul class="workshop-details">
+                            <li>Price: ${{ art.price }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-workshops">No artworks</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
