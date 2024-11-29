@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from Artonia_v2.common.models import Product
-from Artonia_v2.macrame.forms import CreateMacrameForm, EditMacrameForm, MacrameDeleteForm
+from Artonia_v2.macrame.forms import CreateMacrameForm, EditMacrameForm, MacrameDeleteForm, EditMacrameBidForm
 from Artonia_v2.macrame.models import Macrame
 
 
@@ -29,6 +29,12 @@ class MacrameDetailsView(DetailView):
     template_name = 'macrame/details-macrame.html'
     pk_url_kwarg = 'pk'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        macrame = self.get_object()
+        context['is_creator'] = self.request.user.pk == macrame.user_id
+        return context
+
 
 class MacrameDeleteView(DeleteView):
     model = Macrame
@@ -42,3 +48,15 @@ class MacrameDeleteView(DeleteView):
 
     def form_invalid(self, form):
         return self.form_valid(form)
+
+
+class UpdateMacrameBidView(UpdateView):
+    model = Macrame
+    form_class = EditMacrameBidForm
+    template_name = 'macrame/edit-macrame-bid.html'
+    success_url = reverse_lazy('public_artwork_list')
+    pk_field = 'pk'
+
+    def form_valid(self, form):
+        form.instance.bidder = self.request.user.username
+        return super().form_valid(form)

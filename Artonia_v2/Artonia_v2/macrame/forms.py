@@ -36,6 +36,17 @@ class EditMacrameForm(CreateMacrameForm):
     pass
 
 
+class EditMacrameBidForm(forms.ModelForm):
+    class Meta:
+        model = Macrame
+        fields = ['last_bid', 'bidder']
+
+    last_bid = forms.DecimalField(widget=forms.TextInput(attrs={
+        'placeholder': 'Bid amount...'}),
+        required=True
+    )
+
+
 class MacrameDeleteForm(ReadOnlyMixin, forms.ModelForm):
     class Meta:
         model = Macrame

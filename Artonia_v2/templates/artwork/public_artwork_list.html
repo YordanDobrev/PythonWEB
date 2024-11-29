@@ -3,6 +3,7 @@
 {% block content %}
     <h1 style="justify-self: center; font-family: fantasy; font-weight: normal">Public Artworks</h1>
     <div class="workshops-grid">
+        <!--------- Macrame Section -------------->
         {% for creator_name, macrames in macrames_by_creator.items %}
             {% for macrame in macrames %}
                 <div class="workshop-card">
@@ -17,15 +18,19 @@
                         <p>Description: {{ macrame.description|truncatewords:30 }}</p>
                         <ul class="workshop-details">
                             <li>Knot type: {{ macrame.knot_type }}</li>
-                            <li>Price: ${{ macrame.price }}</li>
+                            {% if not macrame.last_bid is None %}
+                                <li>Last bid: ${{ macrame.last_bid }} by user {{ macrame.bidder }}</li>
+                            {% else %}
+                                <li>Price: ${{ macrame.price }}</li>
+                            {% endif %}
                         </ul>
+                        <a href="{% url 'details_macrame' macrame.pk %}" class="view-button">View
+                            Details</a>
                     </div>
                 </div>
-            {% empty %}
-                <p class="no-workshops">No artworks</p>
             {% endfor %}
         {% endfor %}
-
+        <!--------- Art Paintings Section -------------->
         {% for creator_name, arts in arts_by_creator.items %}
             {% for art in arts %}
                 <div class="workshop-card">
@@ -39,13 +44,16 @@
                         <p>Creator: {{ creator_name }}</p>
                         <p>Description: {{ art.description|truncatewords:30 }}</p>
                         <ul class="workshop-details">
-                            <li>Price: ${{ art.price }}</li>
+                            {% if not art.last_bid is None %}
+                                <li>Last bid: ${{ art.last_bid }} by user {{ art.bidder }}</li>
+                            {% else %}
+                                <li>Price: ${{ art.price }}</li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
-            {% empty %}
-                <p class="no-workshops">No artworks</p>
             {% endfor %}
         {% endfor %}
+
     </div>
 {% endblock %}

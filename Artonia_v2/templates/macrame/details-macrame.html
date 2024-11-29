@@ -18,18 +18,27 @@
                 <div class="workshop-current-details">
                     <div>
                         <!-- macrame content -->
-                        <p>{{ macrame.description }}</p>
-                        <p>{{ macrame.knot_type }}</p>
-                        <p>{{ macrame.knot_description }}</p>
-                        <p>{{ macrame.difficulty_level }}</p>
-                        <p>{{ macrame.created_at }}</p>
+                        <p>Description: {{ macrame.description }}</p>
+                        <p>Knot type: {{ macrame.knot_type }}</p>
+                        <p>Knot Description: {{ macrame.knot_description }}</p>
+                        <p>Difficulty level: {{ macrame.difficulty_level }}</p>
+                        <p>Price: {{ macrame.price }}</p>
+                        <p>Last bid: {% if macrame.last_bid is None %} - {% else %}{{ macrame.last_bid }}{% endif %}</p>
+                        <p>Last bid by: {% if macrame.bidder is None %} - {% else %}{{ macrame.bidder }}{% endif %}</p>
                     </div>
                 </div>
-                <div class="workshop-buttons">
-                    <a class="view-button" href="{% url 'edit_macrame' macrame.pk %}">Edit</a>
-                    <a class="view-button" style="background-color: darkred"
-                       href="{% url 'delete_macrame' macrame.pk %}">Delete</a>
-                </div>
+
+                {% if is_creator %}
+                    <div class="workshop-buttons">
+                        <a class="view-button" href="{% url 'edit_macrame' macrame.pk %}">Edit</a>
+                        <a class="view-button" style="background-color: darkred"
+                           href="{% url 'delete_macrame' macrame.pk %}">Delete</a>
+                    </div>
+                {% else %}
+                    <div class="workshop-buttons">
+                        <a class="view-button" href="{% url 'bid_macrame' macrame.pk %}">Bid</a>
+                    </div>
+                {% endif %}
             </div>
         </section>
     </main>

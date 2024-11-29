@@ -31,6 +31,12 @@ class ArtPaintingDetailsView(DetailView):
     template_name = 'art_painting/details-art-painting.html'
     pk_url_kwarg = 'pk'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        art = self.get_object()
+        context['is_creator'] = self.request.user.pk == art.user_id
+        return context
+
 
 class ArtPaintingDeleteView(DeleteView):
     model = ArtPainting
