@@ -1,129 +1,3 @@
-{#{% extends 'base.html' %}#}
-{##}
-{#{% block content %}#}
-{##}
-{#    <div class="dashboard-container">#}
-{##}
-{#        <div class="workshops-header">#}
-{#            <span><a href="{% url 'create_macrame' %}" class="view-button">Create New Macrame</a></span>#}
-{#            <span style="margin-left: 10px"><a href="{% url 'create-art-painting' %}" class="view-button">Create New Art Painting</a></span>#}
-{#        </div>#}
-{#        <section class="registered-workshops">#}
-{#            <div class="workshop-current-card" style="max-width: 700px; background: rgb(0,255,217, 0.1)">#}
-{#                <h2 class="workshops-current-header" style="color: #53773b;text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">Workshops I'm Registered For</h2>#}
-{#            </div>#}
-{#            {% if registered_workshops %}#}
-{#                <div class="workshops-grid">#}
-{#                    {% for workshop in registered_workshops %}#}
-{#                        <div class="workshop-card">#}
-{#                            <h3 style="color: darkblue">{{ workshop.title }}</h3>#}
-{#                            {% if workshop.image_url %}#}
-{#                                <div class="workshop-image">#}
-{#                                    <img src="{{ workshop.image_url }}" alt="{{ workshop.title }}">#}
-{#                                </div>#}
-{#                            {% endif %}#}
-{#                            <div class="workshop-content">#}
-{#                                <p>{{ workshop.description|truncatewords:30 }}</p>#}
-{#                                <ul class="workshop-details">#}
-{#                                    <li>Location: {{ workshop.location }}</li>#}
-{#                                    <li>Date: {{ workshop.date|date:"F j, Y" }}</li>#}
-{#                                    <li>Price: ${{ workshop.price }}</li>#}
-{#                                </ul>#}
-{#                                <a href="{% url 'workshop-detail' workshop.pk %}" class="view-button">View Details</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    {% endfor %}#}
-{#                </div>#}
-{#            {% else %}#}
-{#                <p class="no-workshops">You haven't registered for any workshops yet.</p>#}
-{#            {% endif %}#}
-{#        </section>#}
-{##}
-{#        {% if macrames %}#}
-{#            <section class="registered-workshops">#}
-{#                <div class="workshop-current-card" style="max-width: 700px; background: rgb(0,255,217, 0.1)">#}
-{#                    <h2 class="workshops-current-header" style="color: #53773b; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">My Products</h2>#}
-{#                </div>#}
-{#                {% if macrames %}#}
-{#                    <div class="workshops-grid">#}
-{#                        {% for macrame in macrames %}#}
-{#                            <div class="workshop-card">#}
-{#                                <h3 style="color: darkgreen">{{ macrame.name }}</h3>#}
-{#                                {% if macrame.image_url %}#}
-{#                                    <div class="workshop-image">#}
-{#                                        <img src="{{ macrame.image_url }}" alt="{{ macrame.name }}">#}
-{#                                    </div>#}
-{#                                {% endif %}#}
-{#                                <div class="workshop-content">#}
-{#                                    <p>{{ macrame.description|truncatewords:30 }}</p>#}
-{#                                    <ul class="workshop-details">#}
-{#                                        <li>Price: {{ macrame.price }} lv.</li>#}
-{#                                    </ul>#}
-{#                                    <div>#}
-{#                                        <a href="{% url 'details_macrame' macrame.pk %}" class="view-button">View#}
-{#                                            Details</a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{##}
-{#                        {% for arts in art_paint %}#}
-{#                            <div class="workshop-card">#}
-{#                                <h3 style="color: darkgreen">{{ arts.name }}</h3>#}
-{#                                {% if arts.image_url %}#}
-{#                                    <div class="workshop-image">#}
-{#                                        <img src="{{ arts.image_url }}" alt="{{ arts.name }}">#}
-{#                                    </div>#}
-{#                                {% endif %}#}
-{#                                <div class="workshop-content">#}
-{#                                    <p>{{ arts.description|truncatewords:30 }}</p>#}
-{#                                    <ul class="workshop-details">#}
-{#                                        <li>Price: {{ arts.price }} lv.</li>#}
-{#                                    </ul>#}
-{#                                    <div>#}
-{#                                        <a href="{% url 'details_art-painting' arts.pk %}" class="view-button">View#}
-{#                                            Details</a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{##}
-{#                    </div>#}
-{#                {% else %}#}
-{#                    <p>You haven't created any Macrames or Art Paintings yet.</p>#}
-{#                {% endif %}#}
-{#            </section>#}
-{#        {% endif %}#}
-{##}
-{#        {% if not registered_workshops and not is_instructor %}#}
-{#            <div class="empty-dashboard">#}
-{#                <p>Welcome to your dashboard!</p>#}
-{#                <p>Explore available workshops or learn about becoming an instructor.</p>#}
-{#                <a href="{% url 'workshop-list' %}" class="cta-button">Browse Workshops</a>#}
-{#            </div>#}
-{#        {% endif %}#}
-{##}
-{#        {% if is_paginated %}#}
-{#            <div class="pagination">#}
-{#                {% if page_obj.has_previous %}#}
-{#                    <a href="?page=1" class="pagination-link">&laquo; First</a>#}
-{#                    <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Previous</a>#}
-{#                {% endif %}#}
-{##}
-{#                <span class="current-page">#}
-{#                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}#}
-{#                </span>#}
-{##}
-{#                {% if page_obj.has_next %}#}
-{#                    <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Next</a>#}
-{#                    <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Last &raquo;</a>#}
-{#                {% endif %}#}
-{#            </div>#}
-{#        {% endif %}#}
-{#    </div>#}
-{##}
-{#{% endblock %}#}
-
 {% extends 'base.html' %}
 
 {% block content %}
@@ -164,7 +38,8 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <p style="color: red; font-family: fantasy; font-size: larger">You haven't registered for any workshops yet.</p>
+                <p style="color: red; font-family: fantasy; font-size: larger">You haven't registered for any workshops
+                    yet.</p>
             {% endif %}
         </section>
 
@@ -212,7 +87,7 @@
                                     {% if macrame.is_public %}
                                         <div class="text-sm text-gray-600 mt-2">
                                             <span>👥 Public Views: {{ macrame.views_count|default:"0" }}</span>
-                                            <span class="ml-3">❤️ Likes: {{ macrame.likes.count|default:"0" }}</span>
+                                            <span class="ml-3">❤️ Likes: {{ macrame_object.total_likes|default:"0" }}</span>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -255,7 +130,7 @@
                                     {% if arts.is_public %}
                                         <div class="text-sm text-gray-600 mt-2">
                                             <span>👥 Public Views: {{ arts.views_count|default:"0" }}</span>
-                                            <span class="ml-3">❤️ Likes: {{ arts.likes.count|default:"0" }}</span>
+                                            <span class="ml-3">❤️ Likes: {{ art_painting_object.total_likes|default:"0" }}</span>
                                         </div>
                                     {% endif %}
                                 </div>

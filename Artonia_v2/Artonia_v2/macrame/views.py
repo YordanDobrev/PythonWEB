@@ -1,6 +1,10 @@
-from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy, reverse
+from django.views import View
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
-from Artonia_v2.common.models import Product
+from Artonia_v2.common.models import Product, Like
 from Artonia_v2.macrame.forms import CreateMacrameForm, EditMacrameForm, MacrameDeleteForm, EditMacrameBidForm
 from Artonia_v2.macrame.models import Macrame
 
@@ -33,6 +37,20 @@ class MacrameDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         macrame = self.get_object()
         context['is_creator'] = self.request.user.pk == macrame.user_id
+
+        context['likes'] = macrame.total_likes()
+
+        # Check if the current user has liked this macrame
+        if self.request.user.is_authenticated:
+            content_type = ContentType.objects.get_for_model(Macrame)
+            context['user_has_liked'] = Like.objects.filter(
+                user=self.request.user,
+                content_type=content_type,
+                object_id=macrame.pk
+            ).exists()
+        else:
+            context['user_has_liked'] = False
+
         return context
 
 
@@ -60,3 +78,32 @@ class UpdateMacrameBidView(UpdateView):
     def form_valid(self, form):
         form.instance.bidder = self.request.user.username
         return super().form_valid(form)
+
+
+class LikeToggleView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        macrame = get_object_or_404(Macrame, pk=pk)
+
+        # Get the content type for Macrame
+        content_type = ContentType.objects.get_for_model(Macrame)
+
+        # Check if user has already liked this macrame
+        existing_like = Like.objects.filter(
+            user=request.user,
+            content_type=content_type,
+            object_id=macrame.pk
+        )
+
+        if existing_like.exists():
+            # Remove the like if it exists
+            existing_like.delete()
+        else:
+            # Create a new like
+            Like.objects.create(
+                user=request.user,
+                content_type=content_type,
+                object_id=macrame.pk
+            )
+
+        # Redirect back to the macrame details page
+        return redirect(reverse_lazy('details_macrame', kwargs={'pk': pk}))

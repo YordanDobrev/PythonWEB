@@ -1,7 +1,10 @@
 from django.db import models
 from Artonia_v2.accounts.models import ArtoniaUser
 from Artonia_v2.art_painting.choices import TechniqueChoice
-from Artonia_v2.common.models import Product
+
+from django.contrib.contenttypes.fields import GenericRelation
+
+from Artonia_v2.common.models import Product, Like
 
 
 class ArtPainting(Product):
@@ -25,19 +28,7 @@ class ArtPainting(Product):
         default=False
     )
 
-    views_count = models.PositiveIntegerField(
-        default=0
-    )
+    likes = GenericRelation(Like)
 
-    likes = models.ManyToManyField(
-        to=ArtoniaUser,
-        related_name='liked_paintings',
-        blank=True
-    )
-
-    @property
-    def like_count(self):
+    def total_likes(self):
         return self.likes.count()
-
-    def __str__(self):
-        return self.name

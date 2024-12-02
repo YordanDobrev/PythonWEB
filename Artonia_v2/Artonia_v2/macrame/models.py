@@ -1,7 +1,8 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
-
+from django.contrib.contenttypes.fields import GenericRelation
 from Artonia_v2.accounts.models import ArtoniaUser
-from Artonia_v2.common.models import Product
+from Artonia_v2.common.models import Product, Like
 from Artonia_v2.macrame.choices import KnotChoices
 
 
@@ -43,3 +44,8 @@ class Macrame(Product):
         blank=True,
         null=True,
     )
+
+    likes = GenericRelation(Like)
+
+    def total_likes(self):
+        return self.likes.count()

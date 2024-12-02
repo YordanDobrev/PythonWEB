@@ -4,12 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
-
 from Artonia_v2.art_painting.models import ArtPainting
+from Artonia_v2.common.models import Like
 from Artonia_v2.forms import CustomUserForm
 from Artonia_v2.macrame.models import Macrame
 from Artonia_v2.utils import get_user_obj
 from Artonia_v2.workshops.models import Workshop
+from django.contrib.contenttypes.models import ContentType
 
 
 # Create your views here.
@@ -59,3 +60,38 @@ def toggle_artwork_visibility(request, pk, artwork_type):
         messages.success(request, f'Your {artwork_type} is now {status}.')
 
     return redirect('dashboard')
+
+
+def toggle_like(request, obj_id, model_type):
+    # Get the correct model
+    if model_type == 'macrame':
+        model = Macrame
+    elif model_type == 'art_painting':
+        model = ArtPainting
+    else:
+        raise ValueError("Invalid model type")
+
+    # Get the object
+    obj = get_object_or_404(model, pk=obj_id)
+
+    # Get content type
+    content_type = ContentType.objects.get_for_model(model)
+
+    # Check existing like
+    existing_like = Like.objects.filter(
+        user=request.user,
+        content_type=content_type,
+        object_id=obj.id
+    )
+
+    if existing_like.exists():
+        # Unlike
+        existing_like.delete()
+    else:
+        # Like
+        Like.objects.create(
+            user=request.user,
+            content_object=obj
+        )
+
+    return redirect('object_detail', pk=obj_id)
