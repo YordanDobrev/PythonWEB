@@ -24,13 +24,35 @@
                         <p>Technique description: {{ artpainting.technique_description }}</p>
                         <p>Technique description: {{ artpainting.created_at }}</p>
                     </div>
-                    <!--Edit and Delete buttons -->
+                </div>
+
+                {% if is_creator %}
                     <div class="workshop-buttons">
                         <a class="view-button" href="{% url 'edit_art-painting' artpainting.pk %}">Edit</a>
                         <a class="view-button" style="background-color: darkred"
                            href="{% url 'delete_art-painting' artpainting.pk %}">Delete</a>
                     </div>
-                </div>
+                {% endif %}
+
+                {% if artpainting.is_public %}
+                    <div class="text-sm text-gray-600 mt-2">
+                        <!-- Like Button -->
+                        <div class="workshop-buttons">
+                            {% if user.is_authenticated %}
+                                <form method="post" action="{% url 'art_like_toggle' artpainting.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="like-button">
+                                        {% if user_has_liked %}
+                                            <span id="total-likes">Total Likes: {{ likes }} ❤️</span>
+                                        {% else %}
+                                            <span id="total-likes">Total Likes: {{ likes }} 🤍</span>
+                                        {% endif %}
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </section>
     </main>

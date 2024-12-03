@@ -50,6 +50,8 @@
                                 <li>Price: ${{ art.price }}</li>
                             {% endif %}
                         </ul>
+                        <a href="{% url 'details_art-painting' art.pk %}" class="view-button">View
+                            Details</a>
                     </div>
                 </div>
             {% endfor %}

@@ -40,7 +40,7 @@ class MacrameDetailsView(DetailView):
 
         context['likes'] = macrame.total_likes()
 
-        # Check if the current user has liked this macrame
+        # Check if the current user has liked this macramé
         if self.request.user.is_authenticated:
             content_type = ContentType.objects.get_for_model(Macrame)
             context['user_has_liked'] = Like.objects.filter(
@@ -84,10 +84,10 @@ class LikeToggleView(LoginRequiredMixin, View):
     def post(self, request, pk):
         macrame = get_object_or_404(Macrame, pk=pk)
 
-        # Get the content type for Macrame
+        # Get the content type for Macramé
         content_type = ContentType.objects.get_for_model(Macrame)
 
-        # Check if user has already liked this macrame
+        # Check if user has already liked this macramé
         existing_like = Like.objects.filter(
             user=request.user,
             content_type=content_type,
@@ -105,5 +105,5 @@ class LikeToggleView(LoginRequiredMixin, View):
                 object_id=macrame.pk
             )
 
-        # Redirect back to the macrame details page
+        # Redirect back to the macramé details page
         return redirect(reverse_lazy('details_macrame', kwargs={'pk': pk}))

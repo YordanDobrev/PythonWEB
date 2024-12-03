@@ -1,9 +1,13 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 
 from Artonia_v2.art_painting.forms import CreateArtPaintingForm, EditArtPaintingForm, ArtPaintingDeleteForm
 from Artonia_v2.art_painting.models import ArtPainting
-from Artonia_v2.common.models import Product
+from Artonia_v2.common.models import Product, Like
 
 
 # Create your views here.
@@ -35,6 +39,20 @@ class ArtPaintingDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         art = self.get_object()
         context['is_creator'] = self.request.user.pk == art.user_id
+
+        context['likes'] = art.total_likes()
+
+        # Check if the current user has liked this macramé
+        if self.request.user.is_authenticated:
+            content_type = ContentType.objects.get_for_model(ArtPainting)
+            context['user_has_liked'] = Like.objects.filter(
+                user=self.request.user,
+                content_type=content_type,
+                object_id=art.pk
+            ).exists()
+        else:
+            context['user_has_liked'] = False
+
         return context
 
 
@@ -50,3 +68,32 @@ class ArtPaintingDeleteView(DeleteView):
 
     def form_invalid(self, form):
         return self.form_valid(form)
+
+
+class LikeToggleView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        art_painting = get_object_or_404(ArtPainting, pk=pk)
+
+        # Get the content type for ArtPainting
+        content_type = ContentType.objects.get_for_model(ArtPainting)
+
+        # Check if user has already liked this ArtPainting
+        existing_like = Like.objects.filter(
+            user=request.user,
+            content_type=content_type,
+            object_id=art_painting.pk
+        )
+
+        if existing_like.exists():
+            # Remove the like if it exists
+            existing_like.delete()
+        else:
+            # Create a new like
+            Like.objects.create(
+                user=request.user,
+                content_type=content_type,
+                object_id=art_painting.pk
+            )
+
+        # Redirect back to the art_painting details page
+        return redirect(reverse_lazy('details_art-painting', kwargs={'pk': pk}))
