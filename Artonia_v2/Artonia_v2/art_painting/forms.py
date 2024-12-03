@@ -43,3 +43,14 @@ class ArtPaintingDeleteForm(ReadOnlyMixin, forms.ModelForm):
     )
 
     read_only_fields = ['name', 'description', 'price', 'image_url', 'technique_name', 'technique_description']
+
+
+class EditArtBidForm(forms.ModelForm):
+    class Meta:
+        model = ArtPainting
+        fields = ('last_bid',)
+
+    last_bid = forms.DecimalField(widget=forms.TextInput(attrs={
+        'placeholder': 'Place your best bid...'}),
+        required=True
+    )

@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 
-from Artonia_v2.art_painting.forms import CreateArtPaintingForm, EditArtPaintingForm, ArtPaintingDeleteForm
+from Artonia_v2.art_painting.forms import CreateArtPaintingForm, EditArtPaintingForm, ArtPaintingDeleteForm, \
+    EditArtBidForm
 from Artonia_v2.art_painting.models import ArtPainting
 from Artonia_v2.common.models import Product, Like
 
@@ -97,3 +98,15 @@ class LikeToggleView(LoginRequiredMixin, View):
 
         # Redirect back to the art_painting details page
         return redirect(reverse_lazy('details_art-painting', kwargs={'pk': pk}))
+
+
+class UpdateArtPaintingBidView(UpdateView):
+    model = ArtPainting
+    form_class = EditArtBidForm
+    template_name = 'art_painting/edit-art-painting-bid.html'
+    success_url = reverse_lazy('public_artwork_list')
+    pk_field = 'pk'
+
+    def form_valid(self, form):
+        form.instance.bidder = self.request.user.username
+        return super().form_valid(form)

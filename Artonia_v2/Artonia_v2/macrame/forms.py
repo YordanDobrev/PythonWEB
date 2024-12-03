@@ -39,10 +39,10 @@ class EditMacrameForm(CreateMacrameForm):
 class EditMacrameBidForm(forms.ModelForm):
     class Meta:
         model = Macrame
-        fields = ['last_bid', 'bidder']
+        fields = ('last_bid',)
 
     last_bid = forms.DecimalField(widget=forms.TextInput(attrs={
-        'placeholder': 'Bid amount...'}),
+        'placeholder': 'Place your best bid...'}),
         required=True
     )
 

@@ -23,6 +23,9 @@
                     <div>
                         <p>Technique description: {{ artpainting.technique_description }}</p>
                         <p>Technique description: {{ artpainting.created_at }}</p>
+                        <p>Price: {{ artpainting.price }}</p>
+                        <p>Last bid: {% if artpainting.last_bid is None %} - {% else %}{{ artpainting.last_bid }}{% endif %}</p>
+                        <p>Last bid by: {% if artpainting.bidder is None %} - {% else %}{{ artpainting.bidder }}{% endif %}</p>
                     </div>
                 </div>
 
@@ -31,6 +34,10 @@
                         <a class="view-button" href="{% url 'edit_art-painting' artpainting.pk %}">Edit</a>
                         <a class="view-button" style="background-color: darkred"
                            href="{% url 'delete_art-painting' artpainting.pk %}">Delete</a>
+                    </div>
+                {% else %}
+                    <div class="workshop-buttons">
+                        <a class="view-button" href="{% url 'bid_art_painting' artpainting.pk %}">Bid</a>
                     </div>
                 {% endif %}
 

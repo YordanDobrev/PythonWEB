@@ -8,5 +8,6 @@ urlpatterns = [
         path('edit/', views.UpdateArtPaintingView.as_view(), name='edit_art-painting'),
         path('details/', views.ArtPaintingDetailsView.as_view(), name='details_art-painting'),
         path('delete/', views.ArtPaintingDeleteView.as_view(), name='delete_art-painting'),
+        path('bid/', views.UpdateArtPaintingBidView.as_view(), name='bid_art_painting'),
         path('like/', views.LikeToggleView.as_view(), name='art_like_toggle'),
     ]))]

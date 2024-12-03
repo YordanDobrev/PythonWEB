@@ -28,6 +28,18 @@ class ArtPainting(Product):
         default=False
     )
 
+    last_bid = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        blank=True,
+        null=True,
+    )
+
+    bidder = models.CharField(
+        blank=True,
+        null=True,
+    )
+
     likes = GenericRelation(Like)
 
     def total_likes(self):
