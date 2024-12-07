@@ -7,6 +7,7 @@
         {% for creator_name, macrames in macrames_by_creator.items %}
             {% for macrame in macrames %}
                 <div class="workshop-card">
+                    <div class="artwork-label">Macrame</div>
                     <h3 style="color: darkblue">{{ macrame.name }}</h3>
                     {% if macrame.image_url %}
                         <div class="workshop-image">
@@ -34,6 +35,7 @@
         {% for creator_name, arts in arts_by_creator.items %}
             {% for art in arts %}
                 <div class="workshop-card">
+                    <div class="artwork-label">Art Painting</div>
                     <h3 style="color: darkblue">{{ art.name }}</h3>
                     {% if art.image_url %}
                         <div class="workshop-image">

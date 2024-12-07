@@ -104,23 +104,42 @@
     justify-content: center;
     align-items: center;
     margin-top: 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    font-family: 'Arial', sans-serif;
 }
 
 .pagination-link {
-    padding: 0.3rem 0.6rem;
+    padding: 0.5rem 1rem;
     margin: 0 0.2rem;
-    color: #007bff;
+    color: #ffffff;
+    background-color: #ff6f61; /* Match your site's color palette */
+    border: none;
+    border-radius: 5px;
     text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .pagination-link:hover {
+    background-color: #ff4733; /* Slightly darker for hover effect */
+    transform: scale(1.05);
     text-decoration: none;
 }
 
 .current-page {
     font-weight: bold;
     margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #6c757d; /* Muted gray for current page */
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+}
+
+.pagination-link.disabled {
+    background-color: #d3d3d3; /* Light gray for disabled state */
+    color: #ffffff;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 /* Responsive adjustments */
@@ -415,9 +434,25 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
-/* Optional: If you want to add a label next to the checkbox */
+
 .form-check {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.artwork-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 223, 0, 0.9);
+    color: #333;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'fantasy';
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }

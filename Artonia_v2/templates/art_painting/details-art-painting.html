@@ -12,20 +12,20 @@
                         src="{{ artpainting.image_url }}"
                         alt={{ artpainting.name }}
                 />
-                <p>{{ artpainting.name }}</p>
+                <p><strong>Art Name:</strong> {{ artpainting.name }}</p>
                 <div class="workshop-current-details">
                     <div>
-                        <p>Description {{ artpainting.description }}</p>
+                        <p><strong>Description:</strong> {{ artpainting.description }}</p>
                     </div>
                     <div>
-                        <p>Technique name: {{ artpainting.technique_name }}</p>
+                        <p><strong>Technique name:</strong> {{ artpainting.technique_name }}</p>
                     </div>
                     <div>
-                        <p>Technique description: {{ artpainting.technique_description }}</p>
-                        <p>Technique description: {{ artpainting.created_at }}</p>
-                        <p>Price: {{ artpainting.price }}</p>
-                        <p>Last bid: {% if artpainting.last_bid is None %} - {% else %}{{ artpainting.last_bid }}{% endif %}</p>
-                        <p>Last bid by: {% if artpainting.bidder is None %} - {% else %}{{ artpainting.bidder }}{% endif %}</p>
+                        <p><strong>Technique description:</strong> {{ artpainting.technique_description }}</p>
+                        <p><strong>Created:</strong> {{ artpainting.created_at }}</p>
+                        <p><strong>Price:</strong> ${{ artpainting.price }}</p>
+                        <p><strong>Last bid:</strong> {% if artpainting.last_bid is None %} - {% else %}${{ artpainting.last_bid }}{% endif %}</p>
+                        <p><strong>Last bid by:</strong> {% if artpainting.bidder is None %} - {% else %}{{ artpainting.bidder }}{% endif %}</p>
                     </div>
                 </div>
 

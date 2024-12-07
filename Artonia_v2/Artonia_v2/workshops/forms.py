@@ -7,7 +7,7 @@ from django import forms
 class CreateWorkshopForm(forms.ModelForm):
     class Meta:
         model = Workshop
-        exclude = ('participants','instructor')
+        exclude = ('participants', 'instructor')
 
     title = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Workshop name...'}))
@@ -32,6 +32,7 @@ class CreateWorkshopForm(forms.ModelForm):
     duration_hours = forms.IntegerField(
         widget=forms.NumberInput(attrs={
             'type': 'number',
+            'placeholder': 'Duration in Hours',
         })
     )
 

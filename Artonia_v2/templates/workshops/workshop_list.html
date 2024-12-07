@@ -15,6 +15,7 @@
                 {% if request.user in workshop.participants.all %}
                     <div class="registered-label">Registered</div>
                 {% endif %}
+
                 <h3 style="color: darkblue">{{ workshop.title }}</h3>
                 {% if workshop.image_url %}
                     <div class="workshop-image">
