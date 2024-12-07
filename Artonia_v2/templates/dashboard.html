@@ -86,7 +86,7 @@
 
                                     {% if macrame.is_public %}
                                         <div class="text-sm text-gray-600 mt-2">
-                                            <span class="ml-3">❤️ Likes: {{ macrame_object.total_likes|default:"0" }}</span>
+                                            <span class="ml-3">❤️ Likes: {{macrame.likes.count}}</span>
                                         </div>
                                     {% endif %}
                                 </div>
