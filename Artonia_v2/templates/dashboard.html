@@ -48,7 +48,7 @@
                 <div class="workshop-current-card" style="max-width: 700px; background: rgb(0,255,217, 0.1)">
                     <h2 class="workshops-current-header"
                         style="color: #53773b; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;">
-                        My Products
+                        My Artworks
                     </h2>
                 </div>
                 <div class="workshops-grid">
@@ -128,8 +128,7 @@
 
                                     {% if arts.is_public %}
                                         <div class="text-sm text-gray-600 mt-2">
-                                            <span>👥 Public Views: {{ arts.views_count|default:"0" }}</span>
-                                            <span class="ml-3">❤️ Likes: {{ art_painting_object.total_likes|default:"0" }}</span>
+                                            <span class="ml-3">❤️ Likes: {{arts.likes.count}}</span>
                                         </div>
                                     {% endif %}
                                 </div>

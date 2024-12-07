@@ -7,7 +7,7 @@ from Artonia_v2.mixins import ReadOnlyMixin
 class CreateArtPaintingForm(forms.ModelForm):
     class Meta:
         model = ArtPainting
-        exclude = ['created_at', 'updated_at', 'user']
+        exclude = ['created_at', 'updated_at', 'user', 'bidder', 'last_bid', 'is_public']
 
     name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Art Painting name...'}))
@@ -36,7 +36,7 @@ class EditArtPaintingForm(CreateArtPaintingForm):
 class ArtPaintingDeleteForm(ReadOnlyMixin, forms.ModelForm):
     class Meta:
         model = ArtPainting
-        exclude = ['created_at', 'updated_at', 'user']
+        exclude = ['created_at', 'updated_at', 'user', 'bidder', 'last_bid', 'is_public']
 
     image_url = forms.CharField(
         label='Post Image URL:'

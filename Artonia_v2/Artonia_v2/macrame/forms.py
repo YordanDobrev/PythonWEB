@@ -7,7 +7,7 @@ from Artonia_v2.mixins import ReadOnlyMixin
 class CreateMacrameForm(forms.ModelForm):
     class Meta:
         model = Macrame
-        exclude = ['created_at', 'updated_at', 'user']
+        exclude = ['created_at', 'updated_at', 'user', 'is_public', 'bidder', 'last_bid']
 
     name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Macrame name...'}))
@@ -26,10 +26,6 @@ class CreateMacrameForm(forms.ModelForm):
 
     knot_type = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Put a knot type...'}))
-
-    knot_description = forms.CharField(widget=forms.Textarea(attrs={
-        'placeholder': 'Short Knot Description...'
-    }))
 
 
 class EditMacrameForm(CreateMacrameForm):
@@ -50,10 +46,10 @@ class EditMacrameBidForm(forms.ModelForm):
 class MacrameDeleteForm(ReadOnlyMixin, forms.ModelForm):
     class Meta:
         model = Macrame
-        exclude = ['created_at', 'updated_at', 'user']
+        exclude = ['created_at', 'updated_at', 'user', 'is_public', 'bidder', 'last_bid']
 
     image_url = forms.CharField(
         label='Post Image URL:'
     )
 
-    read_only_fields = ['name', 'description', 'price', 'image_url', 'knot_type', 'knot_description']
+    read_only_fields = ['name', 'description', 'price', 'image_url', 'knot_type',]
