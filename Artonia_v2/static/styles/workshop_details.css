@@ -40,6 +40,8 @@
 .workshop-current-details {
     list-style-type: none;
     padding-bottom: 10px;
+    font-family: Tahoma, serif;
+    font-size-adjust: 0.75;
     margin: 20px;
     text-align: center;
     object-position: center;

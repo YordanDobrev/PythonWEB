@@ -14,17 +14,21 @@
                         alt="{{ macrame.name }}"
                 />
                 <!-- macrame title -->
-                <p><strong>Macrame Name:</strong> {{ macrame.name }}</p>
+
                 <div class="workshop-current-details">
-                    <div>
-                        <!-- macrame content -->
-                        <p><strong>Description:</strong> {{ macrame.description }}</p>
-                        <p><strong>Knot type:</strong> {{ macrame.knot_type }}</p>
-                        <p><strong>Difficulty level:</strong> {{ macrame.difficulty_level }}</p>
-                        <p><strong>Price:</strong> ${{ macrame.price }}</p>
-                        <p><strong>Last bid:</strong> {% if macrame.last_bid is None %} - {% else %}${{ macrame.last_bid }}{% endif %}</p>
-                        <p><strong>Last bid by:</strong> {% if macrame.bidder is None %} - {% else %}{{ macrame.bidder }}{% endif %}</p>
-                    </div>
+                    <!-- macrame content -->
+                    <ul>
+                        <li><strong>Name:</strong> {{ macrame.name }}</li>
+                        <li><strong>Description:</strong> {{ macrame.description }}</li>
+                        <li><strong>Knot type:</strong> {{ macrame.knot_type }}</li>
+                        <li><strong>Difficulty level:</strong> {{ macrame.difficulty_level }}</li>
+                        <li><strong>Price:</strong> ${{ macrame.price }}</li>
+                        <li><strong>Last bid:</strong> {% if macrame.last_bid is None %} - {% else %}$
+                            {{ macrame.last_bid }}{% endif %}</li>
+                        <li><strong>Last bid by:</strong> {% if macrame.bidder is None %} - {% else %}
+                            {{ macrame.bidder }}{% endif %}</li>
+                    </ul>
+
                 </div>
 
                 {% if is_creator %}

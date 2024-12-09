@@ -12,21 +12,19 @@
                         src="{{ artpainting.image_url }}"
                         alt={{ artpainting.name }}
                 />
-                <p><strong>Art Name:</strong> {{ artpainting.name }}</p>
                 <div class="workshop-current-details">
-                    <div>
-                        <p><strong>Description:</strong> {{ artpainting.description }}</p>
-                    </div>
-                    <div>
-                        <p><strong>Technique name:</strong> {{ artpainting.technique_name }}</p>
-                    </div>
-                    <div>
-                        <p><strong>Technique description:</strong> {{ artpainting.technique_description }}</p>
-                        <p><strong>Created:</strong> {{ artpainting.created_at }}</p>
-                        <p><strong>Price:</strong> ${{ artpainting.price }}</p>
-                        <p><strong>Last bid:</strong> {% if artpainting.last_bid is None %} - {% else %}${{ artpainting.last_bid }}{% endif %}</p>
-                        <p><strong>Last bid by:</strong> {% if artpainting.bidder is None %} - {% else %}{{ artpainting.bidder }}{% endif %}</p>
-                    </div>
+                    <ul>
+                        <li><strong>Art Name:</strong> {{ artpainting.name }}</li>
+                        <li><strong>Description:</strong> {{ artpainting.description }}</li>
+                        <li><strong>Technique name:</strong> {{ artpainting.technique_name }}</li>
+                        <li><strong>Technique description:</strong> {{ artpainting.technique_description }}</li>
+                        <li><strong>Created:</strong> {{ artpainting.created_at }}</li>
+                        <li><strong>Price:</strong> ${{ artpainting.price }}</li>
+                        <li><strong>Last bid:</strong> {% if artpainting.last_bid is None %} - {% else %}$
+                            {{ artpainting.last_bid }}{% endif %}</li>
+                        <li><strong>Last bid by:</strong> {% if artpainting.bidder is None %} - {% else %}
+                            {{ artpainting.bidder }}{% endif %}</li>
+                    </ul>
                 </div>
 
                 {% if is_creator %}
