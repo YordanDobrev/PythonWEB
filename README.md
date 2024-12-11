@@ -28,7 +28,7 @@ Ensure you have the following installed on your system:
 - **PostgreSQL**: A running instance of PostgreSQL database.
 
 ### Installation Steps
-1. Download the repository to your local machine and open the polder as a new Django Project.
+1. Download the repository to your local machine and open the folder as a new Django Project.
 
 2. Create and activate a virtual environment:
    ```bash
