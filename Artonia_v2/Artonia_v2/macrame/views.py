@@ -1,7 +1,8 @@
+from datetime import date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404, redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from Artonia_v2.common.models import Product, Like
@@ -37,7 +38,7 @@ class MacrameDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         macrame = self.get_object()
         context['is_creator'] = self.request.user.pk == macrame.user_id
-
+        context['closed_bid_date'] = date.today()
         context['likes'] = macrame.total_likes()
 
         # Check if the current user has liked this macramé

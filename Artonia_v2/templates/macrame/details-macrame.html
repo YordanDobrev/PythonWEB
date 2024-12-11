@@ -27,20 +27,29 @@
                             {{ macrame.last_bid }}{% endif %}</li>
                         <li><strong>Last bid by:</strong> {% if macrame.bidder is None %} - {% else %}
                             {{ macrame.bidder }}{% endif %}</li>
+                        <li><strong>Bid due date:</strong> {{ macrame.bid_due_date|date:"d/M/Y" }}</li>
                     </ul>
-
                 </div>
 
                 {% if is_creator %}
+                    <div>
+                        <p style="font-size: larger">Winner: <strong>{{ macrame.bidder }}</strong></p>
+                    </div>
                     <div class="workshop-buttons">
                         <a class="view-button" href="{% url 'edit_macrame' macrame.pk %}">Edit</a>
                         <a class="view-button" style="background-color: darkred"
                            href="{% url 'delete_macrame' macrame.pk %}">Delete</a>
                     </div>
                 {% else %}
-                    <div class="workshop-buttons">
-                        <a class="view-button" href="{% url 'bid_macrame' macrame.pk %}">Bid</a>
-                    </div>
+                    {% if macrame.bid_due_date < closed_bid_date %}
+                        <div>
+                            <p style="font-size: larger">Winner: <strong>{{ macrame.bidder }}</strong></p>
+                        </div>
+                    {% else %}
+                        <div class="workshop-buttons">
+                            <a class="view-button" href="{% url 'bid_macrame' macrame.pk %}">Bid</a>
+                        </div>
+                    {% endif %}
                 {% endif %}
 
                 {% if macrame.is_public %}

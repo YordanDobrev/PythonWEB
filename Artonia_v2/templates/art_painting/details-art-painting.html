@@ -18,26 +18,38 @@
                         <li><strong>Description:</strong> {{ artpainting.description }}</li>
                         <li><strong>Technique name:</strong> {{ artpainting.technique_name }}</li>
                         <li><strong>Technique description:</strong> {{ artpainting.technique_description }}</li>
-                        <li><strong>Created:</strong> {{ artpainting.created_at }}</li>
+                        <li><strong>Created:</strong> {{ artpainting.created_at|date:"d/M/Y" }}</li>
                         <li><strong>Price:</strong> ${{ artpainting.price }}</li>
                         <li><strong>Last bid:</strong> {% if artpainting.last_bid is None %} - {% else %}$
                             {{ artpainting.last_bid }}{% endif %}</li>
                         <li><strong>Last bid by:</strong> {% if artpainting.bidder is None %} - {% else %}
                             {{ artpainting.bidder }}{% endif %}</li>
+                        <li><strong>Bid due date:</strong> {{ artpainting.bid_due_date|date:"d/M/Y" }}</li>
                     </ul>
                 </div>
 
                 {% if is_creator %}
+                    <div>
+                        <p style="font-size: larger">Winner: <strong>{{ macrame.bidder }}</strong></p>
+                    </div>
                     <div class="workshop-buttons">
                         <a class="view-button" href="{% url 'edit_art-painting' artpainting.pk %}">Edit</a>
                         <a class="view-button" style="background-color: darkred"
                            href="{% url 'delete_art-painting' artpainting.pk %}">Delete</a>
                     </div>
                 {% else %}
-                    <div class="workshop-buttons">
-                        <a class="view-button" href="{% url 'bid_art_painting' artpainting.pk %}">Bid</a>
-                    </div>
+                    {% if artpainting.bid_due_date < closed_bid_date %}
+                        <div>
+                            <p style="font-size: larger">Winner: <strong>{{ artpainting.bidder }}</strong></p>
+                        </div>
+                    {% else %}
+                        <div class="workshop-buttons">
+                            <a class="view-button" href="{% url 'bid_macrame' artpainting.pk %}">Bid</a>
+                        </div>
+                    {% endif %}
                 {% endif %}
+
+
 
                 {% if artpainting.is_public %}
                     <div class="text-sm text-gray-600 mt-2">

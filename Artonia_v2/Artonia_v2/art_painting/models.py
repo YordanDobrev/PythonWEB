@@ -38,6 +38,8 @@ class ArtPainting(Product):
         null=True,
     )
 
+    bid_due_date = models.DateField()
+
     likes = GenericRelation(Like)
 
     def total_likes(self):

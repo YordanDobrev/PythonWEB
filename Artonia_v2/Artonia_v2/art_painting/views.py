@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404, redirect
@@ -40,7 +42,7 @@ class ArtPaintingDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         art = self.get_object()
         context['is_creator'] = self.request.user.pk == art.user_id
-
+        context['closed_bid_date'] = date.today()
         context['likes'] = art.total_likes()
 
         # Check if the current user has liked this macramé

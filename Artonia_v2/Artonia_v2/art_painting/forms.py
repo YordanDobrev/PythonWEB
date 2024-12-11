@@ -28,6 +28,10 @@ class CreateArtPaintingForm(forms.ModelForm):
         'placeholder': 'Short technique description...'
     }))
 
+    bid_due_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+    )
+
 
 class EditArtPaintingForm(CreateArtPaintingForm):
     pass

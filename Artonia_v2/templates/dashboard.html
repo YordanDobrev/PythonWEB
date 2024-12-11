@@ -26,11 +26,11 @@
                                 </div>
                             {% endif %}
                             <div class="workshop-content">
-                                <p>{{ workshop.description|truncatewords:30 }}</p>
+                                <p><strong>Description:</strong> {{ workshop.description|truncatewords:30 }}</p>
                                 <ul class="workshop-details">
-                                    <li>Location: {{ workshop.location }}</li>
-                                    <li>Date: {{ workshop.date|date:"F j, Y" }}</li>
-                                    <li>Price: ${{ workshop.price }}</li>
+                                    <li><strong>Location:</strong> {{ workshop.location }}</li>
+                                    <li><strong>Date:</strong> {{ workshop.date|date:"F j, Y" }}</li>
+                                    <li><strong>Price:</strong> ${{ workshop.price }}</li>
                                 </ul>
                                 <a href="{% url 'workshop-detail' workshop.pk %}" class="view-button">View Details</a>
                             </div>

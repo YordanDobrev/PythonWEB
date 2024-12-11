@@ -27,6 +27,10 @@ class CreateMacrameForm(forms.ModelForm):
     knot_type = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Put a knot type...'}))
 
+    bid_due_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+    )
+
 
 class EditMacrameForm(CreateMacrameForm):
     pass
@@ -52,4 +56,4 @@ class MacrameDeleteForm(ReadOnlyMixin, forms.ModelForm):
         label='Post Image URL:'
     )
 
-    read_only_fields = ['name', 'description', 'price', 'image_url', 'knot_type',]
+    read_only_fields = ['name', 'description', 'price', 'image_url', 'knot_type', ]
