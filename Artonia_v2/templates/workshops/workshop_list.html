@@ -8,14 +8,17 @@
             <span><a href="{% url 'workshop-create' %}" class="view-button">Create New Workshop</a></span>
         {% endif %}
     </div>
-    <h1 style="justify-self: center; font-family: fantasy; font-weight: normal">Available Workshops</h1>
+        {% if workshops %}
+            <h1 style="justify-self: center; font-family: fantasy; font-weight: normal">Available Workshops</h1>
+        {% else %}
+            <h1 style="justify-self: center; font-family: fantasy; font-weight: normal">No Available Workshops</h1>
+        {% endif %}
     <div class="workshops-grid">
         {% for workshop in workshops %}
             <div class="workshop-card">
                 {% if request.user in workshop.participants.all %}
                     <div class="registered-label">Registered</div>
                 {% endif %}
-
                 <h3 style="color: darkblue">{{ workshop.title }}</h3>
                 {% if workshop.image_url %}
                     <div class="workshop-image">
@@ -33,8 +36,6 @@
                     <a href="{% url 'workshop-detail' workshop.pk %}" class="view-button">View Details</a>
                 </div>
             </div>
-        {% empty %}
-            <p class="no-workshops">No workshops available.</p>
         {% endfor %}
     </div>
 
