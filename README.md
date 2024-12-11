@@ -99,6 +99,11 @@ psycopg2==2.9.10
 sqlparse==0.5.1
 tzdata==2024.2
 ```
+Additional Dependency:
+Make sure you install decouple as well:
+```
+pip install python-decouple
+```
 
 ## Usage
 1. After starting the server, users can create an account or log in to access the features.
