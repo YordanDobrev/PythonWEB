@@ -48,16 +48,16 @@ Ensure you have the following installed on your system:
 
 4. Configure the PostgreSQL database in your Django settings file (`settings.py`). Update the `DATABASES` section with your database credentials:
    ```python
-  DATABASES = {
-      'default': {
-          'ENGINE': 'django.db.backends.postgresql',
-          'NAME': config('DB_NAME'),
-          'USER': config('DB_USER'),
-          'PASSWORD': config('DB_PASSWORD'),
-          'HOST': config('DB_HOST', default='localhost'),
-          'PORT': config('DB_PORT', default='5432'),
-      }
-  }
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.postgresql',
+             'NAME': config('DB_NAME'),
+             'USER': config('DB_USER'),
+             'PASSWORD': config('DB_PASSWORD'),
+             'HOST': config('DB_HOST', default='localhost'),
+             'PORT': config('DB_PORT', default='5432'),
+         }
+     }
    ```
 
 5. Copy the `env.template` file and fill in the required information:
