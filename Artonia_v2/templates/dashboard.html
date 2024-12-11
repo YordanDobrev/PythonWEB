@@ -7,7 +7,7 @@
             <span style="margin-left: 10px"><a href="{% url 'create-art-painting' %}" class="view-button">Create New Art Painting</a></span>
         </div>
 
-        <!-- Workshops Section (Unchanged) -->
+        <!-- Workshops Section -->
         <section class="registered-workshops">
             <div class="workshop-current-card" style="max-width: 700px; background: rgb(0,255,217, 0.1)">
                 <h2 class="workshops-current-header"
@@ -42,7 +42,7 @@
                     yet.</p>
             {% endif %}
         </section>
-
+        <!-- Artworks Section -->
         {% if macrames or art_paint %}
             <section class="registered-workshops">
                 <div class="workshop-current-card" style="max-width: 700px; background: rgb(0,255,217, 0.1)">
@@ -51,6 +51,7 @@
                         My Artworks
                     </h2>
                 </div>
+                
                 <div class="workshops-grid">
                     {% for macrame in macrames %}
                         <div class="workshop-card">
@@ -83,10 +84,9 @@
                                             {% endif %}
                                         </button>
                                     </form>
-
                                     {% if macrame.is_public %}
                                         <div class="text-sm text-gray-600 mt-2">
-                                            <span class="ml-3">❤️ Likes: {{macrame.likes.count}}</span>
+                                            <span class="ml-3">❤️ Likes: {{ macrame.likes.count }}</span>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -125,16 +125,16 @@
                                             {% endif %}
                                         </button>
                                     </form>
-
                                     {% if arts.is_public %}
                                         <div class="text-sm text-gray-600 mt-2">
-                                            <span class="ml-3">❤️ Likes: {{arts.likes.count}}</span>
+                                            <span class="ml-3">❤️ Likes: {{ arts.likes.count }}</span>
                                         </div>
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
+                
                 </div>
             </section>
         {% endif %}
@@ -145,11 +145,9 @@
                     <a href="?page=1" class="pagination-link">&laquo; First</a>
                     <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Previous</a>
                 {% endif %}
-
                 <span class="current-page">
                                 Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                             </span>
-
                 {% if page_obj.has_next %}
                     <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Next</a>
                     <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Last &raquo;</a>

@@ -79,4 +79,3 @@ class WorkshopRegistration(models.Model):
 
     class Meta:
         unique_together = ['workshop', 'participant']
-

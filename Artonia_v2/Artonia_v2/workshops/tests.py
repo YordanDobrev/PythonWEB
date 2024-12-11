@@ -36,11 +36,13 @@ class WorkshopModelTestCase(TestCase):
 
     def test_workshop_creation(self):
         """Test workshop can be created with valid data"""
+
         self.assertTrue(isinstance(self.workshop, Workshop))
         self.assertEqual(str(self.workshop), 'Test Art Workshop')
 
     def test_workshop_default_ordering(self):
         """Test default ordering by date"""
+
         future_workshop = Workshop.objects.create(
             title='Future Workshop',
             instructor=self.user,
@@ -59,6 +61,7 @@ class WorkshopModelTestCase(TestCase):
 
     def test_workshop_registration(self):
         """Test workshop registration functionality"""
+
         participant = ArtoniaUser.objects.create_user(
             email='participant@example.com',
             username='participantuser',
@@ -77,6 +80,7 @@ class WorkshopModelTestCase(TestCase):
 
     def test_duplicate_registration_prevention(self):
         """Test preventing duplicate workshop registrations"""
+
         participant = ArtoniaUser.objects.create_user(
             email='duplicate@example.com',
             username='duplicateuser',
@@ -96,6 +100,7 @@ class WorkshopModelTestCase(TestCase):
 
     def test_workshop_capacity_validation(self):
         """Test workshop capacity constraints"""
+
         participants = [
             ArtoniaUser.objects.create_user(
                 email=f'participant{i}@example.com',
@@ -113,6 +118,7 @@ class WorkshopModelTestCase(TestCase):
 
     def test_workshop_past_date_validation(self):
         """Test prevention of creating workshops with past dates"""
+
         with self.assertRaises(ValidationError):
             past_workshop = Workshop(
                 title='Past Workshop',
@@ -129,6 +135,7 @@ class WorkshopModelTestCase(TestCase):
 
     def test_workshop_online_url_requirement(self):
         """Test online workshops require a meeting URL"""
+
         with self.assertRaises(ValidationError):
             invalid_online_workshop = Workshop(
                 title='Invalid Online Workshop',
@@ -147,6 +154,7 @@ class WorkshopModelTestCase(TestCase):
 
     def test_workshop_price_validation(self):
         """Test workshop price constraints"""
+
         with self.assertRaises(ValidationError):
             invalid_price_workshop = Workshop(
                 title='Invalid Price Workshop',

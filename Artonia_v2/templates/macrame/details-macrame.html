@@ -2,7 +2,6 @@
 
 {% block content %}
     <main>
-        <!-- Macrame Details -->
         <section>
             <div class="workshop-current-card">
                 <h2 class="workshop-form-header">Macrame Details</h2>
@@ -13,8 +12,6 @@
                         src="{{ macrame.image_url }}"
                         alt="{{ macrame.name }}"
                 />
-                <!-- macrame title -->
-
                 <div class="workshop-current-details">
                     <!-- macrame content -->
                     <ul>
@@ -55,7 +52,6 @@
                 {% if macrame.is_public %}
                     <div class="text-sm text-gray-600 mt-2">
                         <!-- Like Button -->
-
                         <div class="workshop-buttons">
                             {% if user.is_authenticated %}
                                 <form method="post" action="{% url 'like_toggle' macrame.pk %}">

@@ -85,10 +85,8 @@ class LikeToggleView(LoginRequiredMixin, View):
     def post(self, request, pk):
         macrame = get_object_or_404(Macrame, pk=pk)
 
-        # Get the content type for Macramé
         content_type = ContentType.objects.get_for_model(Macrame)
 
-        # Check if user has already liked this macramé
         existing_like = Like.objects.filter(
             user=request.user,
             content_type=content_type,
@@ -96,15 +94,12 @@ class LikeToggleView(LoginRequiredMixin, View):
         )
 
         if existing_like.exists():
-            # Remove the like if it exists
             existing_like.delete()
         else:
-            # Create a new like
             Like.objects.create(
                 user=request.user,
                 content_type=content_type,
                 object_id=macrame.pk
             )
 
-        # Redirect back to the macramé details page
         return redirect(reverse_lazy('details_macrame', kwargs={'pk': pk}))

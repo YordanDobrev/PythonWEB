@@ -17,9 +17,7 @@
         <a id="logo" href="{% url 'home' %}">
             <img id="logo-img" src="{% static 'images/Artonia Circle Logo_2.JPG' %}" alt="logo">
             <span class="logo-text">Artonia</span>
-            <!-- Update this path to your actual logo image -->
         </a>
-
         <!-- Navigation -->
         <nav>
             {% if request.user.is_authenticated %}
@@ -40,12 +38,14 @@
                 <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
                     {% csrf_token %}
                 </form>
+                
             {% else %}
                 <div class="guest">
                     <a style="text-decoration: none" href="{% url 'login' %}">Login</a>
                     <a style="text-decoration: none" href="{% url 'register' %}">Create Profile</a>
                 </div>
             {% endif %}
+        
         </nav>
     </header>
 
@@ -55,6 +55,7 @@
             {% endblock %}
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'like_script.js' %}"></script>
 

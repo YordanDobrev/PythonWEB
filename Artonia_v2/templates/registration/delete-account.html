@@ -6,12 +6,11 @@
         <section>
             <div class="workshop-form-card">
                 <h1>You are about to delete your Author's Profile</h1>
-                <!-- Delete Author's Profile Form -->
 
                 <form class="workshop-form-fields" method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
-                    <!-- Confirm Button -->
+                    <!-- Confirm/Cancel Button -->
                     <div>
                         <button class="view-button" type="submit">Confirm</button>
                         <button type="submit" class="view-button" style="background-color: darkred"><a
@@ -19,8 +18,8 @@
                         </button>
                     </div>
                 </form>
+                
             </div>
-            <!-- End Delete Form -->
         </section>
     </main>
 

@@ -30,7 +30,7 @@
 
                 {% if is_creator %}
                     <div>
-                        <p style="font-size: larger">Winner: <strong>{{ macrame.bidder }}</strong></p>
+                        <p style="font-size: larger">Winner: <strong>{{ artpainting.bidder }}</strong></p>
                     </div>
                     <div class="workshop-buttons">
                         <a class="view-button" href="{% url 'edit_art-painting' artpainting.pk %}">Edit</a>
@@ -48,8 +48,6 @@
                         </div>
                     {% endif %}
                 {% endif %}
-
-
 
                 {% if artpainting.is_public %}
                     <div class="text-sm text-gray-600 mt-2">
@@ -70,6 +68,7 @@
                         </div>
                     </div>
                 {% endif %}
+            
             </div>
         </section>
     </main>
