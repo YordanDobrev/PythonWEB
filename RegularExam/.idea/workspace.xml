@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e27aff2b-1866-463e-acb4-d76ec83f2ab4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/Artonia_v2/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/Artonia_v2/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/static/styles/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/static/styles/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/static/styles/details.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/static/styles/details.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/static/styles/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/static/styles/form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Artonia_v2/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Artonia_v2/templates/registration/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/details.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/details.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/navigation.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;YordanDobrev&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/YordanDobrev/PythonWEB.git&quot;,
+    &quot;accountId&quot;: &quot;823e12b7-27cc-4b2d-9112-5257b3141dde&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2o0gee9CGEmHnNObcgN8q6OS47N" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Django Server.RegularExam.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pack (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.pack.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/PythonWEB/Artonia_v2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\PythonWEB\RegularExam\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\PythonWEB\RegularExam\templates" />
+      <recent name="D:\GitHub\PythonWEB\RegularExam\RegularExam" />
+      <recent name="D:\GitHub\PythonWEB\RegularExam" />
+      <recent name="D:\GitHub\PythonWEB\RegularExam\templates\post" />
+      <recent name="D:\GitHub\PythonWEB\RegularExam\templates\author" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.RegularExam">
+    <configuration name="pack (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RegularExam" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pack.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pack" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RegularExam" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RegularExam" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RegularExam/pack.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RegularExam" type="Python.DjangoServer" factoryName="Django server">
+      <module name="RegularExam" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="RegularExam.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.pack (1)" />
+        <item itemvalue="Python.pack" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17890.14" />
+        <option value="bundled-python-sdk-5b207ade9991-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17890.14" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e27aff2b-1866-463e-acb4-d76ec83f2ab4" name="Changes" comment="" />
+      <created>1730012004387</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730012004387</updated>
+      <workItem from="1730012024824" duration="20171000" />
+      <workItem from="1730032885196" duration="293000" />
+      <workItem from="1730034091379" duration="627000" />
+      <workItem from="1730539577879" duration="62000" />
+      <workItem from="1730790251907" duration="10620000" />
+      <workItem from="1731139514372" duration="2000" />
+      <workItem from="1731139590420" duration="11577000" />
+      <workItem from="1731158870585" duration="1000" />
+      <workItem from="1731158957530" duration="674000" />
+      <workItem from="1731161530703" duration="173000" />
+      <workItem from="1731223378039" duration="444000" />
+      <workItem from="1731223893044" duration="635000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RegularExam$pack__1_.coverage" NAME="pack (1) Coverage Results" MODIFIED="1730032512943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RegularExam$pack.coverage" NAME="pack Coverage Results" MODIFIED="1730032474023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/RegularExam" />
+  </component>
+</project>
